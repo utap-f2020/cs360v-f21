@@ -365,6 +365,27 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 		//  this to a host virtual address for the IPC to work properly.
         //  Then you should call sys_ipc_try_send()
 		/* Your code here */
+		to_env = tf->tf_regs.reg_rdx;
+	    if ( to_env == 1 && curenv->env_type == ENV_TYPE_GUEST)
+	    {
+//	    cprintf("VTZ:%d:\n",__LINE__);
+		for (i = 0; i < NENV; i++)
+		{
+		    if (envs[i].env_type == ENV_TYPE_FS)
+		    {
+			to_env = (uint64_t)( envs[i].env_id);
+			break;
+		    }
+		}
+	    }
+			
+//	    cprintf("VTZ:%d:%d\n",__LINE__, to_env);
+            ret = syscall(SYS_ipc_try_send,(uint64_t) to_env, (uint64_t)tf->tf_regs.reg_rcx, (uint64_t)tf->tf_regs.reg_rbx, (uint64_t)tf->tf_regs.reg_rdi, (uint64_t)0);
+
+//	    cprintf("VTZ:%d:\n",__LINE__);
+	    tf->tf_regs.reg_rax = (uint64_t) ret;
+//	    cprintf("IPC send hypercall not implemented\n");	    
+	    handled = true;
 		break;
 
 	case VMX_VMCALL_IPCRECV:
@@ -372,6 +393,13 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 		// NB: because recv can call schedule, clobbering the VMCS, 
 		// you should go ahead and increment rip before this call.
 		/* Your code here */
+		//	    cprintf("VTZ:%d:\n",__LINE__);
+    	    tf->tf_rip += vmcs_read32(VMCS_32BIT_VMEXIT_INSTRUCTION_LENGTH);  //cause it never returns
+	//	    cprintf("VTZ:%d:\n",__LINE__);
+	    ret = syscall(SYS_ipc_recv, (uint64_t)tf->tf_regs.reg_rdx, (uint64_t)0, (uint64_t)0, (uint64_t)0,(uint64_t)0);
+	// cprintf("IPC recv hypercall not implemented\n");	    
+	    tf->tf_regs.reg_rax = (uint64_t)ret;
+            handled = true;
 		break;
 	case VMX_VMCALL_LAPICEOI:
 		lapic_eoi();

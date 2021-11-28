@@ -314,6 +314,7 @@ sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)
     struct Env *e;
     struct PageInfo *pp;
     pte_t *ppte;
+
     if ((r = envid2env(envid, &e, 0)) < 0)
         return r;
     if (!e->env_ipc_recving) {
@@ -325,7 +326,11 @@ sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)
      *  is using normal page, use page_insert. Use ept_page_insert() wherever possible. */
     /* Your code here */
 
+
     if (srcva < (void*) UTOP && e->env_ipc_dstva < (void*) UTOP) {
+            
+
+
         if ((~perm & (PTE_U|PTE_P)) || (perm & ~PTE_SYSCALL)) {
             cprintf("[%08x] bad perm %x in sys_ipc_try_send\n", curenv->env_id, perm);
             return -E_INVAL;
