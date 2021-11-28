@@ -15523,7 +15523,7 @@ xchg(volatile uint32_t *addr,uint32_t newval){
   800420d584:	48 89 c1             	mov    %rax,%rcx
   800420d587:	48 ba b0 a2 21 04 80 	movabs $0x800421a2b0,%rdx
   800420d58e:	00 00 00 
-  800420d591:	be 76 00 00 00       	mov    $0x76,%esi
+  800420d591:	be 5a 00 00 00       	mov    $0x5a,%esi
   800420d596:	48 bf d4 a2 21 04 80 	movabs $0x800421a2d4,%rdi
   800420d59d:	00 00 00 
   800420d5a0:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -15597,11 +15597,11 @@ sys_cputs(const char *s, size_t len)
   800420d662:	48 83 ec 10          	sub    $0x10,%rsp
   800420d666:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   800420d66a:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
-    // Check that the user has permission to read memory [s, s+len).
-    // Destroy the environment if not.
+	// Check that the user has permission to read memory [s, s+len).
+	// Destroy the environment if not.
 
-    // LAB 3: Your code here.
-    user_mem_assert(curenv, s, len, PTE_U);
+	// LAB 3: Your code here.
+	user_mem_assert(curenv, s, len, PTE_U);
   800420d66e:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420d675:	00 00 00 
   800420d678:	ff d0                	callq  *%rax
@@ -15623,8 +15623,8 @@ sys_cputs(const char *s, size_t len)
   800420d6b5:	00 00 00 
   800420d6b8:	ff d0                	callq  *%rax
 
-    // Print the string supplied by the user.
-    cprintf("%.*s", len, s);
+	// Print the string supplied by the user.
+	cprintf("%.*s", len, s);
   800420d6ba:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
   800420d6be:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420d6c2:	48 89 c6             	mov    %rax,%rsi
@@ -15647,7 +15647,7 @@ sys_cgetc(void)
 {
   800420d6e2:	55                   	push   %rbp
   800420d6e3:	48 89 e5             	mov    %rsp,%rbp
-    return cons_getc();
+	return cons_getc();
   800420d6e6:	48 b8 ed 11 20 04 80 	movabs $0x80042011ed,%rax
   800420d6ed:	00 00 00 
   800420d6f0:	ff d0                	callq  *%rax
@@ -15663,7 +15663,7 @@ sys_getenvid(void)
 {
   800420d6f4:	55                   	push   %rbp
   800420d6f5:	48 89 e5             	mov    %rsp,%rbp
-    return curenv->env_id;
+	return curenv->env_id;
   800420d6f8:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420d6ff:	00 00 00 
   800420d702:	ff d0                	callq  *%rax
@@ -15693,10 +15693,10 @@ sys_env_destroy(envid_t envid)
   800420d731:	48 89 e5             	mov    %rsp,%rbp
   800420d734:	48 83 ec 20          	sub    $0x20,%rsp
   800420d738:	89 7d ec             	mov    %edi,-0x14(%rbp)
-    int r;
-    struct Env *e;
+	int r;
+	struct Env *e;
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420d73b:	48 8d 4d f0          	lea    -0x10(%rbp),%rcx
   800420d73f:	8b 45 ec             	mov    -0x14(%rbp),%eax
   800420d742:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -15708,16 +15708,16 @@ sys_env_destroy(envid_t envid)
   800420d758:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420d75b:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420d75f:	79 05                	jns    800420d766 <sys_env_destroy+0x36>
-        return r;
+		return r;
   800420d761:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420d764:	eb 18                	jmp    800420d77e <sys_env_destroy+0x4e>
-    env_destroy(e);
+	env_destroy(e);
   800420d766:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420d76a:	48 89 c7             	mov    %rax,%rdi
   800420d76d:	48 b8 6a 8e 20 04 80 	movabs $0x8004208e6a,%rax
   800420d774:	00 00 00 
   800420d777:	ff d0                	callq  *%rax
-    return 0;
+	return 0;
   800420d779:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420d77e:	c9                   	leaveq 
@@ -15731,7 +15731,7 @@ sys_yield(void)
 {
   800420d780:	55                   	push   %rbp
   800420d781:	48 89 e5             	mov    %rsp,%rbp
-    sched_yield();
+	sched_yield();
   800420d784:	48 b8 75 d2 20 04 80 	movabs $0x800420d275,%rax
   800420d78b:	00 00 00 
   800420d78e:	ff d0                	callq  *%rax
@@ -15747,10 +15747,10 @@ sys_exofork(void)
   800420d791:	48 89 e5             	mov    %rsp,%rbp
   800420d794:	53                   	push   %rbx
   800420d795:	48 83 ec 18          	sub    $0x18,%rsp
-    int r;
-    struct Env *e;
+	int r;
+	struct Env *e;
 
-    if ((r = env_alloc(&e, curenv->env_id)) < 0)
+	if ((r = env_alloc(&e, curenv->env_id)) < 0)
   800420d799:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420d7a0:	00 00 00 
   800420d7a3:	ff d0                	callq  *%rax
@@ -15774,14 +15774,14 @@ sys_exofork(void)
   800420d7e4:	89 45 ec             	mov    %eax,-0x14(%rbp)
   800420d7e7:	83 7d ec 00          	cmpl   $0x0,-0x14(%rbp)
   800420d7eb:	79 05                	jns    800420d7f2 <sys_exofork+0x62>
-        return r;
+		return r;
   800420d7ed:	8b 45 ec             	mov    -0x14(%rbp),%eax
   800420d7f0:	eb 6c                	jmp    800420d85e <sys_exofork+0xce>
-    e->env_status = ENV_NOT_RUNNABLE;
+	e->env_status = ENV_NOT_RUNNABLE;
   800420d7f2:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
   800420d7f6:	c7 80 d4 00 00 00 04 	movl   $0x4,0xd4(%rax)
   800420d7fd:	00 00 00 
-    e->env_tf = curenv->env_tf;
+	e->env_tf = curenv->env_tf;
   800420d800:	48 8b 5d e0          	mov    -0x20(%rbp),%rbx
   800420d804:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420d80b:	00 00 00 
@@ -15802,11 +15802,11 @@ sys_exofork(void)
   800420d83f:	48 89 d7             	mov    %rdx,%rdi
   800420d842:	48 89 c1             	mov    %rax,%rcx
   800420d845:	f3 48 a5             	rep movsq %ds:(%rsi),%es:(%rdi)
-    e->env_tf.tf_regs.reg_rax = 0;
+	e->env_tf.tf_regs.reg_rax = 0;
   800420d848:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
   800420d84c:	48 c7 40 70 00 00 00 	movq   $0x0,0x70(%rax)
   800420d853:	00 
-    return e->env_id;
+	return e->env_id;
   800420d854:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
   800420d858:	8b 80 c8 00 00 00    	mov    0xc8(%rax),%eax
 }
@@ -15827,10 +15827,10 @@ sys_env_set_status(envid_t envid, int status)
   800420d869:	48 83 ec 20          	sub    $0x20,%rsp
   800420d86d:	89 7d ec             	mov    %edi,-0x14(%rbp)
   800420d870:	89 75 e8             	mov    %esi,-0x18(%rbp)
-    struct Env *e;
-    int r;
+	struct Env *e;
+	int r;
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420d873:	48 8d 4d f0          	lea    -0x10(%rbp),%rcx
   800420d877:	8b 45 ec             	mov    -0x14(%rbp),%eax
   800420d87a:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -15842,22 +15842,22 @@ sys_env_set_status(envid_t envid, int status)
   800420d890:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420d893:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420d897:	79 05                	jns    800420d89e <sys_env_set_status+0x39>
-        return r;
+		return r;
   800420d899:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420d89c:	eb 25                	jmp    800420d8c3 <sys_env_set_status+0x5e>
-    if (status != ENV_RUNNABLE && status != ENV_NOT_RUNNABLE)
+	if (status != ENV_RUNNABLE && status != ENV_NOT_RUNNABLE)
   800420d89e:	83 7d e8 02          	cmpl   $0x2,-0x18(%rbp)
   800420d8a2:	74 0d                	je     800420d8b1 <sys_env_set_status+0x4c>
   800420d8a4:	83 7d e8 04          	cmpl   $0x4,-0x18(%rbp)
   800420d8a8:	74 07                	je     800420d8b1 <sys_env_set_status+0x4c>
-        return -E_INVAL;
+		return -E_INVAL;
   800420d8aa:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420d8af:	eb 12                	jmp    800420d8c3 <sys_env_set_status+0x5e>
-    e->env_status = status;
+	e->env_status = status;
   800420d8b1:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420d8b5:	8b 55 e8             	mov    -0x18(%rbp),%edx
   800420d8b8:	89 90 d4 00 00 00    	mov    %edx,0xd4(%rax)
-    return 0;
+	return 0;
   800420d8be:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420d8c3:	c9                   	leaveq 
@@ -15875,11 +15875,11 @@ sys_env_set_trapframe(envid_t envid, struct Trapframe *tf)
   800420d8c9:	48 81 ec e0 00 00 00 	sub    $0xe0,%rsp
   800420d8d0:	89 bd 2c ff ff ff    	mov    %edi,-0xd4(%rbp)
   800420d8d6:	48 89 b5 20 ff ff ff 	mov    %rsi,-0xe0(%rbp)
-    int r;
-    struct Env *e;
-    struct Trapframe ltf;
+	int r;
+	struct Env *e;
+	struct Trapframe ltf;
 
-    user_mem_assert(curenv, tf, sizeof(struct Trapframe), PTE_U);
+	user_mem_assert(curenv, tf, sizeof(struct Trapframe), PTE_U);
   800420d8dd:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420d8e4:	00 00 00 
   800420d8e7:	ff d0                	callq  *%rax
@@ -15900,7 +15900,7 @@ sys_env_set_trapframe(envid_t envid, struct Trapframe *tf)
   800420d921:	48 b8 a4 42 20 04 80 	movabs $0x80042042a4,%rax
   800420d928:	00 00 00 
   800420d92b:	ff d0                	callq  *%rax
-    ltf = *tf;
+	ltf = *tf;
   800420d92d:	48 8b 85 20 ff ff ff 	mov    -0xe0(%rbp),%rax
   800420d934:	48 8d 95 30 ff ff ff 	lea    -0xd0(%rbp),%rdx
   800420d93b:	48 89 c6             	mov    %rax,%rsi
@@ -15908,16 +15908,16 @@ sys_env_set_trapframe(envid_t envid, struct Trapframe *tf)
   800420d943:	48 89 d7             	mov    %rdx,%rdi
   800420d946:	48 89 c1             	mov    %rax,%rcx
   800420d949:	f3 48 a5             	rep movsq %ds:(%rsi),%es:(%rdi)
-    ltf.tf_eflags |= FL_IF;
+	ltf.tf_eflags |= FL_IF;
   800420d94c:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
   800420d950:	80 cc 02             	or     $0x2,%ah
   800420d953:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
-    ltf.tf_cs |= 3;
+	ltf.tf_cs |= 3;
   800420d957:	0f b7 45 d0          	movzwl -0x30(%rbp),%eax
   800420d95b:	83 c8 03             	or     $0x3,%eax
   800420d95e:	66 89 45 d0          	mov    %ax,-0x30(%rbp)
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420d962:	48 8d 4d f0          	lea    -0x10(%rbp),%rcx
   800420d966:	8b 85 2c ff ff ff    	mov    -0xd4(%rbp),%eax
   800420d96c:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -15929,10 +15929,10 @@ sys_env_set_trapframe(envid_t envid, struct Trapframe *tf)
   800420d982:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420d985:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420d989:	79 05                	jns    800420d990 <sys_env_set_trapframe+0xcb>
-        return r;
+		return r;
   800420d98b:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420d98e:	eb 21                	jmp    800420d9b1 <sys_env_set_trapframe+0xec>
-    e->env_tf = ltf;
+	e->env_tf = ltf;
   800420d990:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420d994:	48 89 c2             	mov    %rax,%rdx
   800420d997:	48 8d b5 30 ff ff ff 	lea    -0xd0(%rbp),%rsi
@@ -15940,7 +15940,7 @@ sys_env_set_trapframe(envid_t envid, struct Trapframe *tf)
   800420d9a3:	48 89 d7             	mov    %rdx,%rdi
   800420d9a6:	48 89 c1             	mov    %rax,%rcx
   800420d9a9:	f3 48 a5             	rep movsq %ds:(%rsi),%es:(%rdi)
-    return 0;
+	return 0;
   800420d9ac:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420d9b1:	c9                   	leaveq 
@@ -15958,10 +15958,10 @@ sys_env_set_pgfault_upcall(envid_t envid, void *func)
   800420d9b7:	48 83 ec 20          	sub    $0x20,%rsp
   800420d9bb:	89 7d ec             	mov    %edi,-0x14(%rbp)
   800420d9be:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
-    int r;
-    struct Env *e;
+	int r;
+	struct Env *e;
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420d9c2:	48 8d 4d f0          	lea    -0x10(%rbp),%rcx
   800420d9c6:	8b 45 ec             	mov    -0x14(%rbp),%eax
   800420d9c9:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -15973,14 +15973,14 @@ sys_env_set_pgfault_upcall(envid_t envid, void *func)
   800420d9df:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420d9e2:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420d9e6:	79 05                	jns    800420d9ed <sys_env_set_pgfault_upcall+0x3a>
-        return r;
+		return r;
   800420d9e8:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420d9eb:	eb 14                	jmp    800420da01 <sys_env_set_pgfault_upcall+0x4e>
-    e->env_pgfault_upcall = func;
+	e->env_pgfault_upcall = func;
   800420d9ed:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420d9f1:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
   800420d9f5:	48 89 90 f0 00 00 00 	mov    %rdx,0xf0(%rax)
-    return 0;
+	return 0;
   800420d9fc:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420da01:	c9                   	leaveq 
@@ -15999,11 +15999,11 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   800420da0b:	89 7d dc             	mov    %edi,-0x24(%rbp)
   800420da0e:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
   800420da12:	89 55 d8             	mov    %edx,-0x28(%rbp)
-    int r;
-    struct Env *e;
-    struct PageInfo *pp;
+	int r;
+	struct Env *e;
+	struct PageInfo *pp;
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420da15:	48 8d 4d e8          	lea    -0x18(%rbp),%rcx
   800420da19:	8b 45 dc             	mov    -0x24(%rbp),%eax
   800420da1c:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -16015,10 +16015,10 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   800420da32:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420da35:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420da39:	79 08                	jns    800420da43 <sys_page_alloc+0x40>
-        return r;
+		return r;
   800420da3b:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420da3e:	e9 a7 00 00 00       	jmpq   800420daea <sys_page_alloc+0xe7>
-    if ((~perm & (PTE_U|PTE_P)) || (perm & ~PTE_SYSCALL))
+	if ((~perm & (PTE_U|PTE_P)) || (perm & ~PTE_SYSCALL))
   800420da43:	8b 45 d8             	mov    -0x28(%rbp),%eax
   800420da46:	f7 d0                	not    %eax
   800420da48:	83 e0 05             	and    $0x5,%eax
@@ -16028,18 +16028,18 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   800420da52:	25 f8 f1 ff ff       	and    $0xfffff1f8,%eax
   800420da57:	85 c0                	test   %eax,%eax
   800420da59:	74 0a                	je     800420da65 <sys_page_alloc+0x62>
-        return -E_INVAL;
+		return -E_INVAL;
   800420da5b:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420da60:	e9 85 00 00 00       	jmpq   800420daea <sys_page_alloc+0xe7>
-    if (va >= (void*) UTOP)
+	if (va >= (void*) UTOP)
   800420da65:	48 b8 ff ff 7f 00 80 	movabs $0x80007fffff,%rax
   800420da6c:	00 00 00 
   800420da6f:	48 39 45 d0          	cmp    %rax,-0x30(%rbp)
   800420da73:	76 07                	jbe    800420da7c <sys_page_alloc+0x79>
-        return -E_INVAL;
+		return -E_INVAL;
   800420da75:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420da7a:	eb 6e                	jmp    800420daea <sys_page_alloc+0xe7>
-    if (!(pp = page_alloc(ALLOC_ZERO)))
+	if (!(pp = page_alloc(ALLOC_ZERO)))
   800420da7c:	bf 01 00 00 00       	mov    $0x1,%edi
   800420da81:	48 b8 e0 2f 20 04 80 	movabs $0x8004202fe0,%rax
   800420da88:	00 00 00 
@@ -16047,10 +16047,10 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   800420da8d:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
   800420da91:	48 83 7d f0 00       	cmpq   $0x0,-0x10(%rbp)
   800420da96:	75 07                	jne    800420da9f <sys_page_alloc+0x9c>
-        return -E_NO_MEM;
+		return -E_NO_MEM;
   800420da98:	b8 fc ff ff ff       	mov    $0xfffffffc,%eax
   800420da9d:	eb 4b                	jmp    800420daea <sys_page_alloc+0xe7>
-    if ((r = page_insert(e->env_pml4e, pp, va, perm)) < 0) {
+	if ((r = page_insert(e->env_pml4e, pp, va, perm)) < 0) {
   800420da9f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
   800420daa3:	48 8b 80 e0 00 00 00 	mov    0xe0(%rax),%rax
   800420daaa:	8b 4d d8             	mov    -0x28(%rbp),%ecx
@@ -16063,17 +16063,17 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   800420dac4:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420dac7:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420dacb:	79 18                	jns    800420dae5 <sys_page_alloc+0xe2>
-        page_free(pp);
+		page_free(pp);
   800420dacd:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420dad1:	48 89 c7             	mov    %rax,%rdi
   800420dad4:	48 b8 92 30 20 04 80 	movabs $0x8004203092,%rax
   800420dadb:	00 00 00 
   800420dade:	ff d0                	callq  *%rax
-        return r;
+		return r;
   800420dae0:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420dae3:	eb 05                	jmp    800420daea <sys_page_alloc+0xe7>
-    }
-    return 0;
+	}
+	return 0;
   800420dae5:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420daea:	c9                   	leaveq 
@@ -16084,7 +16084,7 @@ sys_page_alloc(envid_t envid, void *va, int perm)
 //	-E_NO_MEM if there's no memory to allocate any necessary page tables.
 static int
 sys_page_map(envid_t srcenvid, void *srcva,
-         envid_t dstenvid, void *dstva, int perm)
+	     envid_t dstenvid, void *dstva, int perm)
 {
   800420daec:	55                   	push   %rbp
   800420daed:	48 89 e5             	mov    %rsp,%rbp
@@ -16094,12 +16094,12 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dafb:	89 55 b8             	mov    %edx,-0x48(%rbp)
   800420dafe:	48 89 4d a8          	mov    %rcx,-0x58(%rbp)
   800420db02:	44 89 45 a4          	mov    %r8d,-0x5c(%rbp)
-    int r;
-    struct Env *es, *ed;
-    struct PageInfo *pp;
-    pte_t *ppte;
+	int r;
+	struct Env *es, *ed;
+	struct PageInfo *pp;
+	pte_t *ppte;
 
-    if (srcva >= (void*) UTOP || dstva >= (void*) UTOP)
+	if (srcva >= (void*) UTOP || dstva >= (void*) UTOP)
   800420db06:	48 b8 ff ff 7f 00 80 	movabs $0x80007fffff,%rax
   800420db0d:	00 00 00 
   800420db10:	48 39 45 b0          	cmp    %rax,-0x50(%rbp)
@@ -16108,10 +16108,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420db1d:	00 00 00 
   800420db20:	48 39 45 a8          	cmp    %rax,-0x58(%rbp)
   800420db24:	76 0a                	jbe    800420db30 <sys_page_map+0x44>
-        return -E_INVAL;
+		return -E_INVAL;
   800420db26:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420db2b:	e9 3f 01 00 00       	jmpq   800420dc6f <sys_page_map+0x183>
-    if (srcva != ROUNDDOWN(srcva, PGSIZE) || dstva != ROUNDDOWN(dstva, PGSIZE))
+	if (srcva != ROUNDDOWN(srcva, PGSIZE) || dstva != ROUNDDOWN(dstva, PGSIZE))
   800420db30:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
   800420db34:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
   800420db38:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
@@ -16124,11 +16124,11 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420db54:	48 25 00 f0 ff ff    	and    $0xfffffffffffff000,%rax
   800420db5a:	48 3b 45 a8          	cmp    -0x58(%rbp),%rax
   800420db5e:	74 0a                	je     800420db6a <sys_page_map+0x7e>
-        return -E_INVAL;
+		return -E_INVAL;
   800420db60:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420db65:	e9 05 01 00 00       	jmpq   800420dc6f <sys_page_map+0x183>
 
-    if ((r = envid2env(srcenvid, &es, 1)) < 0
+	if ((r = envid2env(srcenvid, &es, 1)) < 0
   800420db6a:	48 8d 4d d8          	lea    -0x28(%rbp),%rcx
   800420db6e:	8b 45 bc             	mov    -0x44(%rbp),%eax
   800420db71:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -16152,10 +16152,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dbad:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420dbb0:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420dbb4:	79 08                	jns    800420dbbe <sys_page_map+0xd2>
-        return r;
+		return r;
   800420dbb6:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420dbb9:	e9 b1 00 00 00       	jmpq   800420dc6f <sys_page_map+0x183>
-    if ((~perm & (PTE_U|PTE_P)) || (perm & ~PTE_SYSCALL))
+	if ((~perm & (PTE_U|PTE_P)) || (perm & ~PTE_SYSCALL))
   800420dbbe:	8b 45 a4             	mov    -0x5c(%rbp),%eax
   800420dbc1:	f7 d0                	not    %eax
   800420dbc3:	83 e0 05             	and    $0x5,%eax
@@ -16165,10 +16165,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dbcd:	25 f8 f1 ff ff       	and    $0xfffff1f8,%eax
   800420dbd2:	85 c0                	test   %eax,%eax
   800420dbd4:	74 0a                	je     800420dbe0 <sys_page_map+0xf4>
-        return -E_INVAL;
+		return -E_INVAL;
   800420dbd6:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420dbdb:	e9 8f 00 00 00       	jmpq   800420dc6f <sys_page_map+0x183>
-    if ((pp = page_lookup(es->env_pml4e, srcva, &ppte)) == 0)
+	if ((pp = page_lookup(es->env_pml4e, srcva, &ppte)) == 0)
   800420dbe0:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
   800420dbe4:	48 8b 80 e0 00 00 00 	mov    0xe0(%rax),%rax
   800420dbeb:	48 8d 55 c8          	lea    -0x38(%rbp),%rdx
@@ -16181,10 +16181,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dc05:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
   800420dc09:	48 83 7d e0 00       	cmpq   $0x0,-0x20(%rbp)
   800420dc0e:	75 07                	jne    800420dc17 <sys_page_map+0x12b>
-        return -E_INVAL;
+		return -E_INVAL;
   800420dc10:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420dc15:	eb 58                	jmp    800420dc6f <sys_page_map+0x183>
-    if ((perm & PTE_W) && !(*ppte & PTE_W))
+	if ((perm & PTE_W) && !(*ppte & PTE_W))
   800420dc17:	8b 45 a4             	mov    -0x5c(%rbp),%eax
   800420dc1a:	83 e0 02             	and    $0x2,%eax
   800420dc1d:	85 c0                	test   %eax,%eax
@@ -16194,10 +16194,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dc28:	83 e0 02             	and    $0x2,%eax
   800420dc2b:	48 85 c0             	test   %rax,%rax
   800420dc2e:	75 07                	jne    800420dc37 <sys_page_map+0x14b>
-        return -E_INVAL;
+		return -E_INVAL;
   800420dc30:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420dc35:	eb 38                	jmp    800420dc6f <sys_page_map+0x183>
-    if ((r = page_insert(ed->env_pml4e, pp, dstva, perm)) < 0)
+	if ((r = page_insert(ed->env_pml4e, pp, dstva, perm)) < 0)
   800420dc37:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
   800420dc3b:	48 8b 80 e0 00 00 00 	mov    0xe0(%rax),%rax
   800420dc42:	8b 4d a4             	mov    -0x5c(%rbp),%ecx
@@ -16210,10 +16210,10 @@ sys_page_map(envid_t srcenvid, void *srcva,
   800420dc5c:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420dc5f:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420dc63:	79 05                	jns    800420dc6a <sys_page_map+0x17e>
-        return r;
+		return r;
   800420dc65:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420dc68:	eb 05                	jmp    800420dc6f <sys_page_map+0x183>
-    return 0;
+	return 0;
   800420dc6a:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420dc6f:	c9                   	leaveq 
@@ -16231,10 +16231,10 @@ sys_page_unmap(envid_t envid, void *va)
   800420dc75:	48 83 ec 20          	sub    $0x20,%rsp
   800420dc79:	89 7d ec             	mov    %edi,-0x14(%rbp)
   800420dc7c:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
-    int r;
-    struct Env *e;
+	int r;
+	struct Env *e;
 
-    if ((r = envid2env(envid, &e, 1)) < 0)
+	if ((r = envid2env(envid, &e, 1)) < 0)
   800420dc80:	48 8d 4d f0          	lea    -0x10(%rbp),%rcx
   800420dc84:	8b 45 ec             	mov    -0x14(%rbp),%eax
   800420dc87:	ba 01 00 00 00       	mov    $0x1,%edx
@@ -16246,10 +16246,10 @@ sys_page_unmap(envid_t envid, void *va)
   800420dc9d:	89 45 fc             	mov    %eax,-0x4(%rbp)
   800420dca0:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
   800420dca4:	79 05                	jns    800420dcab <sys_page_unmap+0x3a>
-        return r;
+		return r;
   800420dca6:	8b 45 fc             	mov    -0x4(%rbp),%eax
   800420dca9:	eb 4b                	jmp    800420dcf6 <sys_page_unmap+0x85>
-    if (va >= (void*) UTOP || PGOFF(va))
+	if (va >= (void*) UTOP || PGOFF(va))
   800420dcab:	48 b8 ff ff 7f 00 80 	movabs $0x80007fffff,%rax
   800420dcb2:	00 00 00 
   800420dcb5:	48 39 45 e0          	cmp    %rax,-0x20(%rbp)
@@ -16258,10 +16258,10 @@ sys_page_unmap(envid_t envid, void *va)
   800420dcbf:	25 ff 0f 00 00       	and    $0xfff,%eax
   800420dcc4:	48 85 c0             	test   %rax,%rax
   800420dcc7:	74 07                	je     800420dcd0 <sys_page_unmap+0x5f>
-        return -E_INVAL;
+		return -E_INVAL;
   800420dcc9:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
   800420dcce:	eb 26                	jmp    800420dcf6 <sys_page_unmap+0x85>
-    page_remove(e->env_pml4e, va);
+	page_remove(e->env_pml4e, va);
   800420dcd0:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420dcd4:	48 8b 80 e0 00 00 00 	mov    0xe0(%rax),%rax
   800420dcdb:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
@@ -16270,7 +16270,7 @@ sys_page_unmap(envid_t envid, void *va)
   800420dce5:	48 b8 4d 3f 20 04 80 	movabs $0x8004203f4d,%rax
   800420dcec:	00 00 00 
   800420dcef:	ff d0                	callq  *%rax
-    return 0;
+	return 0;
   800420dcf1:	b8 00 00 00 00       	mov    $0x0,%eax
 }
   800420dcf6:	c9                   	leaveq 
@@ -16572,7 +16572,7 @@ sys_ipc_recv(void *dstva)
   800420e069:	48 89 e5             	mov    %rsp,%rbp
   800420e06c:	48 83 ec 10          	sub    $0x10,%rsp
   800420e070:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
-    if (curenv->env_ipc_recving)
+	if (curenv->env_ipc_recving)
   800420e074:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e07b:	00 00 00 
   800420e07e:	ff d0                	callq  *%rax
@@ -16589,7 +16589,7 @@ sys_ipc_recv(void *dstva)
   800420e0a4:	0f b6 80 f8 00 00 00 	movzbl 0xf8(%rax),%eax
   800420e0ab:	84 c0                	test   %al,%al
   800420e0ad:	74 2a                	je     800420e0d9 <sys_ipc_recv+0x71>
-        panic("already recving!");
+		panic("already recving!");
   800420e0af:	48 ba d1 a3 21 04 80 	movabs $0x800421a3d1,%rdx
   800420e0b6:	00 00 00 
   800420e0b9:	be 7b 01 00 00       	mov    $0x17b,%esi
@@ -16600,7 +16600,7 @@ sys_ipc_recv(void *dstva)
   800420e0d4:	00 00 00 
   800420e0d7:	ff d1                	callq  *%rcx
 
-    curenv->env_ipc_recving = 1;
+	curenv->env_ipc_recving = 1;
   800420e0d9:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e0e0:	00 00 00 
   800420e0e3:	ff d0                	callq  *%rax
@@ -16615,7 +16615,7 @@ sys_ipc_recv(void *dstva)
   800420e102:	48 83 c0 08          	add    $0x8,%rax
   800420e106:	48 8b 00             	mov    (%rax),%rax
   800420e109:	c6 80 f8 00 00 00 01 	movb   $0x1,0xf8(%rax)
-    curenv->env_ipc_dstva = dstva;
+	curenv->env_ipc_dstva = dstva;
   800420e110:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e117:	00 00 00 
   800420e11a:	ff d0                	callq  *%rax
@@ -16631,7 +16631,7 @@ sys_ipc_recv(void *dstva)
   800420e13d:	48 8b 00             	mov    (%rax),%rax
   800420e140:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
   800420e144:	48 89 90 00 01 00 00 	mov    %rdx,0x100(%rax)
-    curenv->env_status = ENV_NOT_RUNNABLE;
+	curenv->env_status = ENV_NOT_RUNNABLE;
   800420e14b:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e152:	00 00 00 
   800420e155:	ff d0                	callq  *%rax
@@ -16647,7 +16647,7 @@ sys_ipc_recv(void *dstva)
   800420e178:	48 8b 00             	mov    (%rax),%rax
   800420e17b:	c7 80 d4 00 00 00 04 	movl   $0x4,0xd4(%rax)
   800420e182:	00 00 00 
-    sched_yield();
+	sched_yield();
   800420e185:	48 b8 75 d2 20 04 80 	movabs $0x800420d275,%rax
   800420e18c:	00 00 00 
   800420e18f:	ff d0                	callq  *%rax
@@ -16661,7 +16661,7 @@ sys_time_msec(void)
 {
   800420e191:	55                   	push   %rbp
   800420e192:	48 89 e5             	mov    %rsp,%rbp
-    return (int) time_msec();
+	return (int) time_msec();
   800420e195:	48 b8 80 88 21 04 80 	movabs $0x8004218880,%rax
   800420e19c:	00 00 00 
   800420e19f:	ff d0                	callq  *%rax
@@ -16679,7 +16679,7 @@ sys_net_transmit(const void *data, size_t len)
   800420e1a7:	48 83 ec 10          	sub    $0x10,%rsp
   800420e1ab:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   800420e1af:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
-    user_mem_assert(curenv, data, len, 0);
+	user_mem_assert(curenv, data, len, 0);
   800420e1b3:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e1ba:	00 00 00 
   800420e1bd:	ff d0                	callq  *%rax
@@ -16700,7 +16700,7 @@ sys_net_transmit(const void *data, size_t len)
   800420e1f3:	48 b8 a4 42 20 04 80 	movabs $0x80042042a4,%rax
   800420e1fa:	00 00 00 
   800420e1fd:	ff d0                	callq  *%rax
-    return e1000_transmit(data, len);
+	return e1000_transmit(data, len);
   800420e1ff:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e203:	89 c2                	mov    %eax,%edx
   800420e205:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
@@ -16723,7 +16723,7 @@ sys_net_receive(void *buf, size_t len)
   800420e220:	48 83 ec 10          	sub    $0x10,%rsp
   800420e224:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   800420e228:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
-    user_mem_assert(curenv, buf, len, PTE_W);
+	user_mem_assert(curenv, buf, len, PTE_W);
   800420e22c:	48 b8 d2 6f 21 04 80 	movabs $0x8004216fd2,%rax
   800420e233:	00 00 00 
   800420e236:	ff d0                	callq  *%rax
@@ -16744,7 +16744,7 @@ sys_net_receive(void *buf, size_t len)
   800420e26c:	48 b8 a4 42 20 04 80 	movabs $0x80042042a4,%rax
   800420e273:	00 00 00 
   800420e276:	ff d0                	callq  *%rax
-    return e1000_receive(buf, len);
+	return e1000_receive(buf, len);
   800420e278:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e27c:	89 c2                	mov    %eax,%edx
   800420e27e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
@@ -16773,7 +16773,7 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e2a9:	48 89 4d e0          	mov    %rcx,-0x20(%rbp)
   800420e2ad:	4c 89 45 d8          	mov    %r8,-0x28(%rbp)
   800420e2b1:	4c 89 4d d0          	mov    %r9,-0x30(%rbp)
-    switch (syscallno) {
+	switch (syscallno) {
   800420e2b5:	48 83 7d f8 10       	cmpq   $0x10,-0x8(%rbp)
   800420e2ba:	0f 87 0d 02 00 00    	ja     800420e4cd <syscall+0x238>
   800420e2c0:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
@@ -16784,8 +16784,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e2d6:	48 01 d0             	add    %rdx,%rax
   800420e2d9:	48 8b 00             	mov    (%rax),%rax
   800420e2dc:	ff e0                	jmpq   *%rax
-    case SYS_cputs:
-        sys_cputs((const char*) a1, a2);
+	case SYS_cputs:
+		sys_cputs((const char*) a1, a2);
   800420e2de:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e2e2:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e2e6:	48 89 d6             	mov    %rdx,%rsi
@@ -16793,25 +16793,25 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e2ec:	48 b8 5e d6 20 04 80 	movabs $0x800420d65e,%rax
   800420e2f3:	00 00 00 
   800420e2f6:	ff d0                	callq  *%rax
-        return 0;
+		return 0;
   800420e2f8:	b8 00 00 00 00       	mov    $0x0,%eax
   800420e2fd:	e9 d2 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_cgetc:
-        return sys_cgetc();
+	case SYS_cgetc:
+		return sys_cgetc();
   800420e302:	48 b8 e2 d6 20 04 80 	movabs $0x800420d6e2,%rax
   800420e309:	00 00 00 
   800420e30c:	ff d0                	callq  *%rax
   800420e30e:	48 98                	cltq   
   800420e310:	e9 bf 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_getenvid:
-        return sys_getenvid();
+	case SYS_getenvid:
+		return sys_getenvid();
   800420e315:	48 b8 f4 d6 20 04 80 	movabs $0x800420d6f4,%rax
   800420e31c:	00 00 00 
   800420e31f:	ff d0                	callq  *%rax
   800420e321:	48 98                	cltq   
   800420e323:	e9 ac 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_env_destroy:
-        return sys_env_destroy(a1);
+	case SYS_env_destroy:
+		return sys_env_destroy(a1);
   800420e328:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e32c:	89 c7                	mov    %eax,%edi
   800420e32e:	48 b8 30 d7 20 04 80 	movabs $0x800420d730,%rax
@@ -16819,8 +16819,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e338:	ff d0                	callq  *%rax
   800420e33a:	48 98                	cltq   
   800420e33c:	e9 93 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_page_alloc:
-        return sys_page_alloc(a1, (void*) a2, a3);
+	case SYS_page_alloc:
+		return sys_page_alloc(a1, (void*) a2, a3);
   800420e341:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
   800420e345:	89 c2                	mov    %eax,%edx
   800420e347:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
@@ -16832,8 +16832,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e35e:	ff d0                	callq  *%rax
   800420e360:	48 98                	cltq   
   800420e362:	e9 6d 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_page_map:
-        return sys_page_map(a1, (void*) a2, a3, (void*) a4, a5);
+	case SYS_page_map:
+		return sys_page_map(a1, (void*) a2, a3, (void*) a4, a5);
   800420e367:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
   800420e36b:	89 c7                	mov    %eax,%edi
   800420e36d:	48 8b 4d d8          	mov    -0x28(%rbp),%rcx
@@ -16848,8 +16848,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e38e:	ff d0                	callq  *%rax
   800420e390:	48 98                	cltq   
   800420e392:	e9 3d 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_page_unmap:
-        return sys_page_unmap(a1, (void*) a2);
+	case SYS_page_unmap:
+		return sys_page_unmap(a1, (void*) a2);
   800420e397:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e39b:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e39f:	48 89 d6             	mov    %rdx,%rsi
@@ -16859,15 +16859,15 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e3ae:	ff d0                	callq  *%rax
   800420e3b0:	48 98                	cltq   
   800420e3b2:	e9 1d 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_exofork:
-        return sys_exofork();
+	case SYS_exofork:
+		return sys_exofork();
   800420e3b7:	48 b8 90 d7 20 04 80 	movabs $0x800420d790,%rax
   800420e3be:	00 00 00 
   800420e3c1:	ff d0                	callq  *%rax
   800420e3c3:	48 98                	cltq   
   800420e3c5:	e9 0a 01 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_env_set_status:
-        return sys_env_set_status(a1, a2);
+	case SYS_env_set_status:
+		return sys_env_set_status(a1, a2);
   800420e3ca:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
   800420e3ce:	89 c2                	mov    %eax,%edx
   800420e3d0:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
@@ -16878,8 +16878,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e3e2:	ff d0                	callq  *%rax
   800420e3e4:	48 98                	cltq   
   800420e3e6:	e9 e9 00 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_env_set_trapframe:
-        return sys_env_set_trapframe(a1, (struct Trapframe*) a2);
+	case SYS_env_set_trapframe:
+		return sys_env_set_trapframe(a1, (struct Trapframe*) a2);
   800420e3eb:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e3ef:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e3f3:	48 89 d6             	mov    %rdx,%rsi
@@ -16889,8 +16889,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e402:	ff d0                	callq  *%rax
   800420e404:	48 98                	cltq   
   800420e406:	e9 c9 00 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_env_set_pgfault_upcall:
-        return sys_env_set_pgfault_upcall(a1, (void*) a2);
+	case SYS_env_set_pgfault_upcall:
+		return sys_env_set_pgfault_upcall(a1, (void*) a2);
   800420e40b:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e40f:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e413:	48 89 d6             	mov    %rdx,%rsi
@@ -16900,16 +16900,16 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e422:	ff d0                	callq  *%rax
   800420e424:	48 98                	cltq   
   800420e426:	e9 a9 00 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_yield:
-        sys_yield();
+	case SYS_yield:
+		sys_yield();
   800420e42b:	48 b8 80 d7 20 04 80 	movabs $0x800420d780,%rax
   800420e432:	00 00 00 
   800420e435:	ff d0                	callq  *%rax
-        return 0;
+		return 0;
   800420e437:	b8 00 00 00 00       	mov    $0x0,%eax
   800420e43c:	e9 93 00 00 00       	jmpq   800420e4d4 <syscall+0x23f>
-    case SYS_ipc_try_send:
-        return sys_ipc_try_send(a1, a2, (void*) a3, a4);
+	case SYS_ipc_try_send:
+		return sys_ipc_try_send(a1, a2, (void*) a3, a4);
   800420e441:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
   800420e445:	89 c1                	mov    %eax,%ecx
   800420e447:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
@@ -16922,25 +16922,25 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e461:	ff d0                	callq  *%rax
   800420e463:	48 98                	cltq   
   800420e465:	eb 6d                	jmp    800420e4d4 <syscall+0x23f>
-    case SYS_ipc_recv:
-        sys_ipc_recv((void*) a1);
+	case SYS_ipc_recv:
+		sys_ipc_recv((void*) a1);
   800420e467:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e46b:	48 89 c7             	mov    %rax,%rdi
   800420e46e:	48 b8 68 e0 20 04 80 	movabs $0x800420e068,%rax
   800420e475:	00 00 00 
   800420e478:	ff d0                	callq  *%rax
-        return 0;
+		return 0;
   800420e47a:	b8 00 00 00 00       	mov    $0x0,%eax
   800420e47f:	eb 53                	jmp    800420e4d4 <syscall+0x23f>
-    case SYS_time_msec:
-        return sys_time_msec();
+	case SYS_time_msec:
+		return sys_time_msec();
   800420e481:	48 b8 91 e1 20 04 80 	movabs $0x800420e191,%rax
   800420e488:	00 00 00 
   800420e48b:	ff d0                	callq  *%rax
   800420e48d:	48 98                	cltq   
   800420e48f:	eb 43                	jmp    800420e4d4 <syscall+0x23f>
-    case SYS_net_transmit:
-        return sys_net_transmit((const void*)a1, a2);
+	case SYS_net_transmit:
+		return sys_net_transmit((const void*)a1, a2);
   800420e491:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e495:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e499:	48 89 d6             	mov    %rdx,%rsi
@@ -16950,8 +16950,8 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e4a9:	ff d0                	callq  *%rax
   800420e4ab:	48 98                	cltq   
   800420e4ad:	eb 25                	jmp    800420e4d4 <syscall+0x23f>
-    case SYS_net_receive:
-        return sys_net_receive((void*)a1, a2);
+	case SYS_net_receive:
+		return sys_net_receive((void*)a1, a2);
   800420e4af:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800420e4b3:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
   800420e4b7:	48 89 d6             	mov    %rdx,%rsi
@@ -16961,14 +16961,14 @@ syscall(uint64_t syscallno, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, 
   800420e4c7:	ff d0                	callq  *%rax
   800420e4c9:	48 98                	cltq   
   800420e4cb:	eb 07                	jmp    800420e4d4 <syscall+0x23f>
-        sys_vmx_incr_vmdisk_number();
-        return 0;
+		sys_vmx_incr_vmdisk_number();
+		return 0;
 #endif
 
-    default:
-        return -E_NO_SYS;
+	default:
+		return -E_NO_SYS;
   800420e4cd:	48 c7 c0 f9 ff ff ff 	mov    $0xfffffffffffffff9,%rax
-    }
+	}
 }
   800420e4d4:	c9                   	leaveq 
   800420e4d5:	c3                   	retq   

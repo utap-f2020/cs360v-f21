@@ -434,9 +434,12 @@ void vmexit() {
 	int exit_reason = -1;
 	bool exit_handled = false;
 	static uint32_t host_vector;
-	exit_reason = vmcs_read32(VMCS_32BIT_VMEXIT_REASON);
 	// Get the reason for VMEXIT from the VMCS.
 	// Your code here.
+
+	// -- LAB 3 --
+	// check the VMCS for the exit reason
+	exit_reason = vmcs_read32(VMCS_32BIT_VMEXIT_REASON);
 
 	//cprintf( "---VMEXIT Reason: %d---\n", exit_reason );
 	/* vmcs_dump_cpu(); */
