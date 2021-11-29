@@ -346,11 +346,20 @@ sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)
             cprintf("[%08x] attempt to send read-only page read-write in sys_ipc_try_send\n", curenv->env_id);
             return -E_INVAL;
         }
+        // Code here vtz
+        if (env->env_type != ENV_TYPE_GUEST){
 
-        r = page_insert(e->env_pml4e, pp, e->env_ipc_dstva, perm);
-        if (r < 0) {
-            cprintf("[%08x] page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
-            return r;
+            r = page_insert(e->env_pml4e, pp, e->env_ipc_dstva, perm);
+            if (r < 0) {
+                cprintf("[%08x] page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
+                return r;
+            }
+        } else {
+            r = ept_page_insert(env->env_pml4e, pp, env->env_ipc_dstva, perm);
+            if (r < 0){
+                cprintf("[%08x] ept page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
+                return r;
+            }
         }
 
         e->env_ipc_perm = perm;
