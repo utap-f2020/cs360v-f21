@@ -357,7 +357,7 @@ sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)
         } else {
             r = ept_page_insert(env->env_pml4e, pp, env->env_ipc_dstva, perm);
             if (r < 0){
-                cprintf("[%08x] ept page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
+                cprintf("[%08x] ept_page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
                 return r;
             }
         }
