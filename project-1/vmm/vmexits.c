@@ -369,6 +369,7 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 	    if ( to_env == 1 && curenv->env_type == ENV_TYPE_GUEST)
 	    {
 //	    cprintf("VTZ:%d:\n",__LINE__);
+		int i;
 		for (i = 0; i < NENV; i++)
 		{
 		    if (envs[i].env_type == ENV_TYPE_FS)
@@ -380,7 +381,7 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 	    }
 			
 //	    cprintf("VTZ:%d:%d\n",__LINE__, to_env);
-            ret = syscall(SYS_ipc_try_send,(uint64_t) to_env, (uint64_t)tf->tf_regs.reg_rcx, (uint64_t)tf->tf_regs.reg_rbx, (uint64_t)tf->tf_regs.reg_rdi, (uint64_t)0);
+        int64_t ret = syscall(SYS_ipc_try_send,(uint64_t) to_env, (uint64_t)tf->tf_regs.reg_rcx, (uint64_t)tf->tf_regs.reg_rbx, (uint64_t)tf->tf_regs.reg_rdi, (uint64_t)0);
 
 //	    cprintf("VTZ:%d:\n",__LINE__);
 	    tf->tf_regs.reg_rax = (uint64_t) ret;
