@@ -64,10 +64,10 @@ args_exist:
   800095:	79 30                	jns    8000c7 <umain+0x84>
   800097:	8b 45 f8             	mov    -0x8(%rbp),%eax
   80009a:	89 c1                	mov    %eax,%ecx
-  80009c:	48 ba 40 45 80 00 00 	movabs $0x804540,%rdx
+  80009c:	48 ba 60 46 80 00 00 	movabs $0x804660,%rdx
   8000a3:	00 00 00 
   8000a6:	be 10 00 00 00       	mov    $0x10,%esi
-  8000ab:	48 bf 4d 45 80 00 00 	movabs $0x80454d,%rdi
+  8000ab:	48 bf 6d 46 80 00 00 	movabs $0x80466d,%rdi
   8000b2:	00 00 00 
   8000b5:	b8 00 00 00 00       	mov    $0x0,%eax
   8000ba:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -77,10 +77,10 @@ args_exist:
   8000cb:	74 30                	je     8000fd <umain+0xba>
   8000cd:	8b 45 f8             	mov    -0x8(%rbp),%eax
   8000d0:	89 c1                	mov    %eax,%ecx
-  8000d2:	48 ba 5f 45 80 00 00 	movabs $0x80455f,%rdx
+  8000d2:	48 ba 7f 46 80 00 00 	movabs $0x80467f,%rdx
   8000d9:	00 00 00 
   8000dc:	be 12 00 00 00       	mov    $0x12,%esi
-  8000e1:	48 bf 4d 45 80 00 00 	movabs $0x80454d,%rdi
+  8000e1:	48 bf 6d 46 80 00 00 	movabs $0x80466d,%rdi
   8000e8:	00 00 00 
   8000eb:	b8 00 00 00 00       	mov    $0x0,%eax
   8000f0:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -96,16 +96,16 @@ args_exist:
   80011a:	79 30                	jns    80014c <umain+0x109>
   80011c:	8b 45 f8             	mov    -0x8(%rbp),%eax
   80011f:	89 c1                	mov    %eax,%ecx
-  800121:	48 ba 79 45 80 00 00 	movabs $0x804579,%rdx
+  800121:	48 ba 99 46 80 00 00 	movabs $0x804699,%rdx
   800128:	00 00 00 
   80012b:	be 14 00 00 00       	mov    $0x14,%esi
-  800130:	48 bf 4d 45 80 00 00 	movabs $0x80454d,%rdi
+  800130:	48 bf 6d 46 80 00 00 	movabs $0x80466d,%rdi
   800137:	00 00 00 
   80013a:	b8 00 00 00 00       	mov    $0x0,%eax
   80013f:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
   800146:	00 00 00 
   800149:	41 ff d0             	callq  *%r8
-  80014c:	48 bf 81 45 80 00 00 	movabs $0x804581,%rdi
+  80014c:	48 bf a1 46 80 00 00 	movabs $0x8046a1,%rdi
   800153:	00 00 00 
   800156:	48 b8 93 12 80 00 00 	movabs $0x801293,%rax
   80015d:	00 00 00 
@@ -115,7 +115,7 @@ args_exist:
   80016b:	74 29                	je     800196 <umain+0x153>
   80016d:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
   800171:	48 89 c2             	mov    %rax,%rdx
-  800174:	48 be 8f 45 80 00 00 	movabs $0x80458f,%rsi
+  800174:	48 be af 46 80 00 00 	movabs $0x8046af,%rsi
   80017b:	00 00 00 
   80017e:	bf 01 00 00 00       	mov    $0x1,%edi
   800183:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -123,7 +123,7 @@ args_exist:
   80018f:	00 00 00 
   800192:	ff d1                	callq  *%rcx
   800194:	eb b6                	jmp    80014c <umain+0x109>
-  800196:	48 be 93 45 80 00 00 	movabs $0x804593,%rsi
+  800196:	48 be b3 46 80 00 00 	movabs $0x8046b3,%rsi
   80019d:	00 00 00 
   8001a0:	bf 01 00 00 00       	mov    $0x1,%edi
   8001a5:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -344,7 +344,7 @@ args_exist:
   80043f:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   800443:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
   800447:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
-  80044b:	48 be b0 45 80 00 00 	movabs $0x8045b0,%rsi
+  80044b:	48 be d0 46 80 00 00 	movabs $0x8046d0,%rsi
   800452:	00 00 00 
   800455:	48 89 c7             	mov    %rax,%rdi
   800458:	48 b8 59 14 80 00 00 	movabs $0x801459,%rax
@@ -446,7 +446,7 @@ args_exist:
   8005c3:	48 89 d1             	mov    %rdx,%rcx
   8005c6:	48 89 da             	mov    %rbx,%rdx
   8005c9:	89 c6                	mov    %eax,%esi
-  8005cb:	48 bf c8 45 80 00 00 	movabs $0x8045c8,%rdi
+  8005cb:	48 bf e8 46 80 00 00 	movabs $0x8046e8,%rdi
   8005d2:	00 00 00 
   8005d5:	b8 00 00 00 00       	mov    $0x0,%eax
   8005da:	49 b9 4a 07 80 00 00 	movabs $0x80074a,%r9
@@ -459,7 +459,7 @@ args_exist:
   8005fb:	48 b8 9e 06 80 00 00 	movabs $0x80069e,%rax
   800602:	00 00 00 
   800605:	ff d0                	callq  *%rax
-  800607:	48 bf eb 45 80 00 00 	movabs $0x8045eb,%rdi
+  800607:	48 bf 0b 47 80 00 00 	movabs $0x80470b,%rdi
   80060e:	00 00 00 
   800611:	b8 00 00 00 00       	mov    $0x0,%eax
   800616:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -642,7 +642,7 @@ args_exist:
   8008ab:	ba 00 00 00 00       	mov    $0x0,%edx
   8008b0:	48 f7 f1             	div    %rcx
   8008b3:	48 89 d0             	mov    %rdx,%rax
-  8008b6:	48 ba f0 47 80 00 00 	movabs $0x8047f0,%rdx
+  8008b6:	48 ba 10 49 80 00 00 	movabs $0x804910,%rdx
   8008bd:	00 00 00 
   8008c0:	0f b6 04 02          	movzbl (%rdx,%rax,1),%eax
   8008c4:	0f be d0             	movsbl %al,%edx
@@ -883,7 +883,7 @@ args_exist:
   800ba4:	89 c0                	mov    %eax,%eax
   800ba6:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
   800bad:	00 
-  800bae:	48 b8 18 48 80 00 00 	movabs $0x804818,%rax
+  800bae:	48 b8 38 49 80 00 00 	movabs $0x804938,%rax
   800bb5:	00 00 00 
   800bb8:	48 01 d0             	add    %rdx,%rax
   800bbb:	48 8b 00             	mov    (%rax),%rax
@@ -988,7 +988,7 @@ args_exist:
   800cfa:	f7 db                	neg    %ebx
   800cfc:	83 fb 15             	cmp    $0x15,%ebx
   800cff:	7f 16                	jg     800d17 <vprintfmt+0x21a>
-  800d01:	48 b8 40 47 80 00 00 	movabs $0x804740,%rax
+  800d01:	48 b8 60 48 80 00 00 	movabs $0x804860,%rax
   800d08:	00 00 00 
   800d0b:	48 63 d3             	movslq %ebx,%rdx
   800d0e:	4c 8b 24 d0          	mov    (%rax,%rdx,8),%r12
@@ -997,7 +997,7 @@ args_exist:
   800d17:	48 8b 75 a0          	mov    -0x60(%rbp),%rsi
   800d1b:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
   800d1f:	89 d9                	mov    %ebx,%ecx
-  800d21:	48 ba 01 48 80 00 00 	movabs $0x804801,%rdx
+  800d21:	48 ba 21 49 80 00 00 	movabs $0x804921,%rdx
   800d28:	00 00 00 
   800d2b:	48 89 c7             	mov    %rax,%rdi
   800d2e:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -1008,7 +1008,7 @@ args_exist:
   800d45:	48 8b 75 a0          	mov    -0x60(%rbp),%rsi
   800d49:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
   800d4d:	4c 89 e1             	mov    %r12,%rcx
-  800d50:	48 ba 0a 48 80 00 00 	movabs $0x80480a,%rdx
+  800d50:	48 ba 2a 49 80 00 00 	movabs $0x80492a,%rdx
   800d57:	00 00 00 
   800d5a:	48 89 c7             	mov    %rax,%rdi
   800d5d:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -1034,7 +1034,7 @@ args_exist:
   800da2:	4c 8b 20             	mov    (%rax),%r12
   800da5:	4d 85 e4             	test   %r12,%r12
   800da8:	75 0a                	jne    800db4 <vprintfmt+0x2b7>
-  800daa:	49 bc 0d 48 80 00 00 	movabs $0x80480d,%r12
+  800daa:	49 bc 2d 49 80 00 00 	movabs $0x80492d,%r12
   800db1:	00 00 00 
   800db4:	83 7d dc 00          	cmpl   $0x0,-0x24(%rbp)
   800db8:	7e 3f                	jle    800df9 <vprintfmt+0x2fc>
@@ -1384,7 +1384,7 @@ args_exist:
   8012a4:	74 27                	je     8012cd <readline+0x3a>
   8012a6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
   8012aa:	48 89 c2             	mov    %rax,%rdx
-  8012ad:	48 be c8 4a 80 00 00 	movabs $0x804ac8,%rsi
+  8012ad:	48 be e8 4b 80 00 00 	movabs $0x804be8,%rsi
   8012b4:	00 00 00 
   8012b7:	bf 01 00 00 00       	mov    $0x1,%edi
   8012bc:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -1407,7 +1407,7 @@ args_exist:
   801301:	74 20                	je     801323 <readline+0x90>
   801303:	8b 45 f4             	mov    -0xc(%rbp),%eax
   801306:	89 c6                	mov    %eax,%esi
-  801308:	48 bf cb 4a 80 00 00 	movabs $0x804acb,%rdi
+  801308:	48 bf eb 4b 80 00 00 	movabs $0x804beb,%rdi
   80130f:	00 00 00 
   801312:	b8 00 00 00 00       	mov    $0x0,%eax
   801317:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -2167,10 +2167,10 @@ args_exist:
   801c02:	8b 45 dc             	mov    -0x24(%rbp),%eax
   801c05:	49 89 d0             	mov    %rdx,%r8
   801c08:	89 c1                	mov    %eax,%ecx
-  801c0a:	48 ba db 4a 80 00 00 	movabs $0x804adb,%rdx
+  801c0a:	48 ba fb 4b 80 00 00 	movabs $0x804bfb,%rdx
   801c11:	00 00 00 
   801c14:	be 24 00 00 00       	mov    $0x24,%esi
-  801c19:	48 bf f8 4a 80 00 00 	movabs $0x804af8,%rdi
+  801c19:	48 bf 18 4c 80 00 00 	movabs $0x804c18,%rdi
   801c20:	00 00 00 
   801c23:	b8 00 00 00 00       	mov    $0x0,%eax
   801c28:	49 b9 11 05 80 00 00 	movabs $0x800511,%r9
@@ -2808,7 +2808,7 @@ args_exist:
   802426:	8b 80 c8 00 00 00    	mov    0xc8(%rax),%eax
   80242c:	8b 55 ec             	mov    -0x14(%rbp),%edx
   80242f:	89 c6                	mov    %eax,%esi
-  802431:	48 bf 10 4b 80 00 00 	movabs $0x804b10,%rdi
+  802431:	48 bf 30 4c 80 00 00 	movabs $0x804c30,%rdi
   802438:	00 00 00 
   80243b:	b8 00 00 00 00       	mov    $0x0,%eax
   802440:	48 b9 4a 07 80 00 00 	movabs $0x80074a,%rcx
@@ -3024,7 +3024,7 @@ args_exist:
   8026f9:	8b 80 c8 00 00 00    	mov    0xc8(%rax),%eax
   8026ff:	8b 55 dc             	mov    -0x24(%rbp),%edx
   802702:	89 c6                	mov    %eax,%esi
-  802704:	48 bf 2f 4b 80 00 00 	movabs $0x804b2f,%rdi
+  802704:	48 bf 4f 4c 80 00 00 	movabs $0x804c4f,%rdi
   80270b:	00 00 00 
   80270e:	b8 00 00 00 00       	mov    $0x0,%eax
   802713:	48 b9 4a 07 80 00 00 	movabs $0x80074a,%rcx
@@ -3130,7 +3130,7 @@ args_exist:
   802842:	8b 80 c8 00 00 00    	mov    0xc8(%rax),%eax
   802848:	8b 55 dc             	mov    -0x24(%rbp),%edx
   80284b:	89 c6                	mov    %eax,%esi
-  80284d:	48 bf 4b 4b 80 00 00 	movabs $0x804b4b,%rdi
+  80284d:	48 bf 6b 4c 80 00 00 	movabs $0x804c6b,%rdi
   802854:	00 00 00 
   802857:	b8 00 00 00 00       	mov    $0x0,%eax
   80285c:	48 b9 4a 07 80 00 00 	movabs $0x80074a,%rcx
@@ -3219,7 +3219,7 @@ args_exist:
   802956:	8b 80 c8 00 00 00    	mov    0xc8(%rax),%eax
   80295c:	8b 55 dc             	mov    -0x24(%rbp),%edx
   80295f:	89 c6                	mov    %eax,%esi
-  802961:	48 bf 68 4b 80 00 00 	movabs $0x804b68,%rdi
+  802961:	48 bf 88 4c 80 00 00 	movabs $0x804c88,%rdi
   802968:	00 00 00 
   80296b:	b8 00 00 00 00       	mov    $0x0,%eax
   802970:	48 b9 4a 07 80 00 00 	movabs $0x80074a,%rcx
@@ -3345,7 +3345,7 @@ args_exist:
   802aea:	85 c0                	test   %eax,%eax
   802aec:	75 1d                	jne    802b0b <fsipc+0x3c>
   802aee:	bf 01 00 00 00       	mov    $0x1,%edi
-  802af3:	48 b8 38 44 80 00 00 	movabs $0x804438,%rax
+  802af3:	48 b8 5e 45 80 00 00 	movabs $0x80455e,%rax
   802afa:	00 00 00 
   802afd:	ff d0                	callq  *%rax
   802aff:	48 ba 00 74 80 00 00 	movabs $0x807400,%rdx
@@ -3481,12 +3481,12 @@ args_exist:
   802cca:	48 98                	cltq   
   802ccc:	48 3b 45 d8          	cmp    -0x28(%rbp),%rax
   802cd0:	76 35                	jbe    802d07 <devfile_read+0xa0>
-  802cd2:	48 b9 8e 4b 80 00 00 	movabs $0x804b8e,%rcx
+  802cd2:	48 b9 ae 4c 80 00 00 	movabs $0x804cae,%rcx
   802cd9:	00 00 00 
-  802cdc:	48 ba 95 4b 80 00 00 	movabs $0x804b95,%rdx
+  802cdc:	48 ba b5 4c 80 00 00 	movabs $0x804cb5,%rdx
   802ce3:	00 00 00 
   802ce6:	be 89 00 00 00       	mov    $0x89,%esi
-  802ceb:	48 bf aa 4b 80 00 00 	movabs $0x804baa,%rdi
+  802ceb:	48 bf ca 4c 80 00 00 	movabs $0x804cca,%rdi
   802cf2:	00 00 00 
   802cf5:	b8 00 00 00 00       	mov    $0x0,%eax
   802cfa:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -3494,12 +3494,12 @@ args_exist:
   802d04:	41 ff d0             	callq  *%r8
   802d07:	81 7d fc 00 10 00 00 	cmpl   $0x1000,-0x4(%rbp)
   802d0e:	7e 35                	jle    802d45 <devfile_read+0xde>
-  802d10:	48 b9 b8 4b 80 00 00 	movabs $0x804bb8,%rcx
+  802d10:	48 b9 d8 4c 80 00 00 	movabs $0x804cd8,%rcx
   802d17:	00 00 00 
-  802d1a:	48 ba 95 4b 80 00 00 	movabs $0x804b95,%rdx
+  802d1a:	48 ba b5 4c 80 00 00 	movabs $0x804cb5,%rdx
   802d21:	00 00 00 
   802d24:	be 8a 00 00 00       	mov    $0x8a,%esi
-  802d29:	48 bf aa 4b 80 00 00 	movabs $0x804baa,%rdi
+  802d29:	48 bf ca 4c 80 00 00 	movabs $0x804cca,%rdi
   802d30:	00 00 00 
   802d33:	b8 00 00 00 00       	mov    $0x0,%eax
   802d38:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -3564,12 +3564,12 @@ args_exist:
   802e0f:	48 98                	cltq   
   802e11:	48 3b 45 c8          	cmp    -0x38(%rbp),%rax
   802e15:	76 35                	jbe    802e4c <devfile_write+0xdf>
-  802e17:	48 b9 8e 4b 80 00 00 	movabs $0x804b8e,%rcx
+  802e17:	48 b9 ae 4c 80 00 00 	movabs $0x804cae,%rcx
   802e1e:	00 00 00 
-  802e21:	48 ba 95 4b 80 00 00 	movabs $0x804b95,%rdx
+  802e21:	48 ba b5 4c 80 00 00 	movabs $0x804cb5,%rdx
   802e28:	00 00 00 
   802e2b:	be a8 00 00 00       	mov    $0xa8,%esi
-  802e30:	48 bf aa 4b 80 00 00 	movabs $0x804baa,%rdi
+  802e30:	48 bf ca 4c 80 00 00 	movabs $0x804cca,%rdi
   802e37:	00 00 00 
   802e3a:	b8 00 00 00 00       	mov    $0x0,%eax
   802e3f:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -3701,7 +3701,7 @@ args_exist:
   802ff3:	79 28                	jns    80301d <copy+0x65>
   802ff5:	8b 45 fc             	mov    -0x4(%rbp),%eax
   802ff8:	89 c6                	mov    %eax,%esi
-  802ffa:	48 bf c4 4b 80 00 00 	movabs $0x804bc4,%rdi
+  802ffa:	48 bf e4 4c 80 00 00 	movabs $0x804ce4,%rdi
   803001:	00 00 00 
   803004:	b8 00 00 00 00       	mov    $0x0,%eax
   803009:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -3720,7 +3720,7 @@ args_exist:
   80303f:	79 39                	jns    80307a <copy+0xc2>
   803041:	8b 45 f8             	mov    -0x8(%rbp),%eax
   803044:	89 c6                	mov    %eax,%esi
-  803046:	48 bf da 4b 80 00 00 	movabs $0x804bda,%rdi
+  803046:	48 bf fa 4c 80 00 00 	movabs $0x804cfa,%rdi
   80304d:	00 00 00 
   803050:	b8 00 00 00 00       	mov    $0x0,%eax
   803055:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -3748,7 +3748,7 @@ args_exist:
   8030a4:	79 4a                	jns    8030f0 <copy+0x138>
   8030a6:	8b 45 f0             	mov    -0x10(%rbp),%eax
   8030a9:	89 c6                	mov    %eax,%esi
-  8030ab:	48 bf f4 4b 80 00 00 	movabs $0x804bf4,%rdi
+  8030ab:	48 bf 14 4d 80 00 00 	movabs $0x804d14,%rdi
   8030b2:	00 00 00 
   8030b5:	b8 00 00 00 00       	mov    $0x0,%eax
   8030ba:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -3781,7 +3781,7 @@ args_exist:
   803121:	79 47                	jns    80316a <copy+0x1b2>
   803123:	8b 45 f4             	mov    -0xc(%rbp),%eax
   803126:	89 c6                	mov    %eax,%esi
-  803128:	48 bf 07 4c 80 00 00 	movabs $0x804c07,%rdi
+  803128:	48 bf 27 4d 80 00 00 	movabs $0x804d27,%rdi
   80312f:	00 00 00 
   803132:	b8 00 00 00 00       	mov    $0x0,%eax
   803137:	48 ba 4a 07 80 00 00 	movabs $0x80074a,%rdx
@@ -4188,7 +4188,7 @@ args_exist:
   803697:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   80369b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
   80369f:	48 89 c7             	mov    %rax,%rdi
-  8036a2:	48 b8 aa 44 80 00 00 	movabs $0x8044aa,%rax
+  8036a2:	48 b8 d0 45 80 00 00 	movabs $0x8045d0,%rax
   8036a9:	00 00 00 
   8036ac:	ff d0                	callq  *%rax
   8036ae:	83 f8 01             	cmp    $0x1,%eax
@@ -4305,7 +4305,7 @@ args_exist:
   8037e0:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
   8037e4:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
   8037e8:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
-  8037ec:	48 be 22 4c 80 00 00 	movabs $0x804c22,%rsi
+  8037ec:	48 be 42 4d 80 00 00 	movabs $0x804d42,%rsi
   8037f3:	00 00 00 
   8037f6:	48 89 c7             	mov    %rax,%rdi
   8037f9:	48 b8 59 14 80 00 00 	movabs $0x801459,%rax
@@ -4354,7 +4354,7 @@ args_exist:
   80386e:	85 c0                	test   %eax,%eax
   803870:	75 1d                	jne    80388f <nsipc+0x38>
   803872:	bf 02 00 00 00       	mov    $0x2,%edi
-  803877:	48 b8 38 44 80 00 00 	movabs $0x804438,%rax
+  803877:	48 b8 5e 45 80 00 00 	movabs $0x80455e,%rax
   80387e:	00 00 00 
   803881:	ff d0                	callq  *%rax
   803883:	48 ba 04 74 80 00 00 	movabs $0x807404,%rdx
@@ -4569,12 +4569,12 @@ args_exist:
   803b33:	8b 45 fc             	mov    -0x4(%rbp),%eax
   803b36:	3b 45 e8             	cmp    -0x18(%rbp),%eax
   803b39:	7e 35                	jle    803b70 <nsipc_recv+0xa4>
-  803b3b:	48 b9 29 4c 80 00 00 	movabs $0x804c29,%rcx
+  803b3b:	48 b9 49 4d 80 00 00 	movabs $0x804d49,%rcx
   803b42:	00 00 00 
-  803b45:	48 ba 3e 4c 80 00 00 	movabs $0x804c3e,%rdx
+  803b45:	48 ba 5e 4d 80 00 00 	movabs $0x804d5e,%rdx
   803b4c:	00 00 00 
   803b4f:	be 62 00 00 00       	mov    $0x62,%esi
-  803b54:	48 bf 53 4c 80 00 00 	movabs $0x804c53,%rdi
+  803b54:	48 bf 73 4d 80 00 00 	movabs $0x804d73,%rdi
   803b5b:	00 00 00 
   803b5e:	b8 00 00 00 00       	mov    $0x0,%eax
   803b63:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -4607,12 +4607,12 @@ args_exist:
   803bba:	89 10                	mov    %edx,(%rax)
   803bbc:	81 7d f8 3f 06 00 00 	cmpl   $0x63f,-0x8(%rbp)
   803bc3:	7e 35                	jle    803bfa <nsipc_send+0x62>
-  803bc5:	48 b9 62 4c 80 00 00 	movabs $0x804c62,%rcx
+  803bc5:	48 b9 82 4d 80 00 00 	movabs $0x804d82,%rcx
   803bcc:	00 00 00 
-  803bcf:	48 ba 3e 4c 80 00 00 	movabs $0x804c3e,%rdx
+  803bcf:	48 ba 5e 4d 80 00 00 	movabs $0x804d5e,%rdx
   803bd6:	00 00 00 
   803bd9:	be 6d 00 00 00       	mov    $0x6d,%esi
-  803bde:	48 bf 53 4c 80 00 00 	movabs $0x804c53,%rdi
+  803bde:	48 bf 73 4d 80 00 00 	movabs $0x804d73,%rdi
   803be5:	00 00 00 
   803be8:	b8 00 00 00 00       	mov    $0x0,%eax
   803bed:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -4817,13 +4817,13 @@ args_exist:
   803ebd:	89 45 ec             	mov    %eax,-0x14(%rbp)
   803ec0:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
   803ec4:	48 89 c7             	mov    %rax,%rdi
-  803ec7:	48 b8 aa 44 80 00 00 	movabs $0x8044aa,%rax
+  803ec7:	48 b8 d0 45 80 00 00 	movabs $0x8045d0,%rax
   803ece:	00 00 00 
   803ed1:	ff d0                	callq  *%rax
   803ed3:	89 c3                	mov    %eax,%ebx
   803ed5:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
   803ed9:	48 89 c7             	mov    %rax,%rdi
-  803edc:	48 b8 aa 44 80 00 00 	movabs $0x8044aa,%rax
+  803edc:	48 b8 d0 45 80 00 00 	movabs $0x8045d0,%rax
   803ee3:	00 00 00 
   803ee6:	ff d0                	callq  *%rax
   803ee8:	39 c3                	cmp    %eax,%ebx
@@ -4852,7 +4852,7 @@ args_exist:
   803f37:	8b 4d e8             	mov    -0x18(%rbp),%ecx
   803f3a:	8b 45 ec             	mov    -0x14(%rbp),%eax
   803f3d:	89 c6                	mov    %eax,%esi
-  803f3f:	48 bf 73 4c 80 00 00 	movabs $0x804c73,%rdi
+  803f3f:	48 bf 93 4d 80 00 00 	movabs $0x804d93,%rdi
   803f46:	00 00 00 
   803f49:	b8 00 00 00 00       	mov    $0x0,%eax
   803f4e:	49 b8 4a 07 80 00 00 	movabs $0x80074a,%r8
@@ -5050,7 +5050,7 @@ args_exist:
   8041b9:	ff d0                	callq  *%rax
   8041bb:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
   8041bf:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
-  8041c3:	48 be 86 4c 80 00 00 	movabs $0x804c86,%rsi
+  8041c3:	48 be a6 4d 80 00 00 	movabs $0x804da6,%rsi
   8041ca:	00 00 00 
   8041cd:	48 89 c7             	mov    %rax,%rdi
   8041d0:	48 b8 59 14 80 00 00 	movabs $0x801459,%rax
@@ -5184,10 +5184,10 @@ args_exist:
   80438f:	79 30                	jns    8043c1 <ipc_send+0x94>
   804391:	8b 45 fc             	mov    -0x4(%rbp),%eax
   804394:	89 c1                	mov    %eax,%ecx
-  804396:	48 ba 90 4c 80 00 00 	movabs $0x804c90,%rdx
+  804396:	48 ba ad 4d 80 00 00 	movabs $0x804dad,%rdx
   80439d:	00 00 00 
   8043a0:	be 44 00 00 00       	mov    $0x44,%esi
-  8043a5:	48 bf a6 4c 80 00 00 	movabs $0x804ca6,%rdi
+  8043a5:	48 bf c3 4d 80 00 00 	movabs $0x804dc3,%rdi
   8043ac:	00 00 00 
   8043af:	b8 00 00 00 00       	mov    $0x0,%eax
   8043b4:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
@@ -5199,106 +5199,190 @@ args_exist:
 00000000008043c3 <ipc_host_recv>:
   8043c3:	55                   	push   %rbp
   8043c4:	48 89 e5             	mov    %rsp,%rbp
-  8043c7:	48 83 ec 10          	sub    $0x10,%rsp
-  8043cb:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
-  8043cf:	48 ba b8 4c 80 00 00 	movabs $0x804cb8,%rdx
-  8043d6:	00 00 00 
-  8043d9:	be 4e 00 00 00       	mov    $0x4e,%esi
-  8043de:	48 bf a6 4c 80 00 00 	movabs $0x804ca6,%rdi
-  8043e5:	00 00 00 
-  8043e8:	b8 00 00 00 00       	mov    $0x0,%eax
-  8043ed:	48 b9 11 05 80 00 00 	movabs $0x800511,%rcx
-  8043f4:	00 00 00 
-  8043f7:	ff d1                	callq  *%rcx
+  8043c7:	53                   	push   %rbx
+  8043c8:	48 83 ec 28          	sub    $0x28,%rsp
+  8043cc:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  8043d0:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+  8043d7:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+  8043de:	48 83 7d d8 00       	cmpq   $0x0,-0x28(%rbp)
+  8043e3:	75 0e                	jne    8043f3 <ipc_host_recv+0x30>
+  8043e5:	48 b8 00 00 80 00 80 	movabs $0x8000800000,%rax
+  8043ec:	00 00 00 
+  8043ef:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+  8043f3:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  8043f7:	ba 07 00 00 00       	mov    $0x7,%edx
+  8043fc:	48 89 c6             	mov    %rax,%rsi
+  8043ff:	bf 00 00 00 00       	mov    $0x0,%edi
+  804404:	48 b8 88 1d 80 00 00 	movabs $0x801d88,%rax
+  80440b:	00 00 00 
+  80440e:	ff d0                	callq  *%rax
+  804410:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  804414:	48 c1 e8 0c          	shr    $0xc,%rax
+  804418:	48 89 c2             	mov    %rax,%rdx
+  80441b:	48 b8 00 00 00 00 00 	movabs $0x10000000000,%rax
+  804422:	01 00 00 
+  804425:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
+  804429:	48 25 00 f0 ff ff    	and    $0xfffffffffffff000,%rax
+  80442f:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+  804433:	b8 03 00 00 00       	mov    $0x3,%eax
+  804438:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+  80443c:	48 89 d3             	mov    %rdx,%rbx
+  80443f:	0f 01 c1             	vmcall 
+  804442:	89 f2                	mov    %esi,%edx
+  804444:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  804447:	89 55 e8             	mov    %edx,-0x18(%rbp)
+  80444a:	83 7d ec 00          	cmpl   $0x0,-0x14(%rbp)
+  80444e:	79 05                	jns    804455 <ipc_host_recv+0x92>
+  804450:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  804453:	eb 03                	jmp    804458 <ipc_host_recv+0x95>
+  804455:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  804458:	48 83 c4 28          	add    $0x28,%rsp
+  80445c:	5b                   	pop    %rbx
+  80445d:	5d                   	pop    %rbp
+  80445e:	c3                   	retq   
 
-00000000008043f9 <ipc_host_send>:
-  8043f9:	55                   	push   %rbp
-  8043fa:	48 89 e5             	mov    %rsp,%rbp
-  8043fd:	48 83 ec 20          	sub    $0x20,%rsp
-  804401:	89 7d fc             	mov    %edi,-0x4(%rbp)
-  804404:	89 75 f8             	mov    %esi,-0x8(%rbp)
-  804407:	48 89 55 f0          	mov    %rdx,-0x10(%rbp)
-  80440b:	89 4d ec             	mov    %ecx,-0x14(%rbp)
-  80440e:	48 ba d8 4c 80 00 00 	movabs $0x804cd8,%rdx
-  804415:	00 00 00 
-  804418:	be 67 00 00 00       	mov    $0x67,%esi
-  80441d:	48 bf a6 4c 80 00 00 	movabs $0x804ca6,%rdi
-  804424:	00 00 00 
-  804427:	b8 00 00 00 00       	mov    $0x0,%eax
-  80442c:	48 b9 11 05 80 00 00 	movabs $0x800511,%rcx
-  804433:	00 00 00 
-  804436:	ff d1                	callq  *%rcx
+000000000080445f <ipc_host_send>:
+  80445f:	55                   	push   %rbp
+  804460:	48 89 e5             	mov    %rsp,%rbp
+  804463:	53                   	push   %rbx
+  804464:	48 83 ec 38          	sub    $0x38,%rsp
+  804468:	89 7d dc             	mov    %edi,-0x24(%rbp)
+  80446b:	89 75 d8             	mov    %esi,-0x28(%rbp)
+  80446e:	48 89 55 d0          	mov    %rdx,-0x30(%rbp)
+  804472:	89 4d cc             	mov    %ecx,-0x34(%rbp)
+  804475:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+  80447c:	48 83 7d d0 00       	cmpq   $0x0,-0x30(%rbp)
+  804481:	75 0e                	jne    804491 <ipc_host_send+0x32>
+  804483:	48 b8 00 00 80 00 80 	movabs $0x8000800000,%rax
+  80448a:	00 00 00 
+  80448d:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  804491:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  804495:	48 c1 e8 0c          	shr    $0xc,%rax
+  804499:	48 89 c2             	mov    %rax,%rdx
+  80449c:	48 b8 00 00 00 00 00 	movabs $0x10000000000,%rax
+  8044a3:	01 00 00 
+  8044a6:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
+  8044aa:	48 25 00 f0 ff ff    	and    $0xfffffffffffff000,%rax
+  8044b0:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+  8044b4:	b8 02 00 00 00       	mov    $0x2,%eax
+  8044b9:	8b 7d dc             	mov    -0x24(%rbp),%edi
+  8044bc:	8b 4d d8             	mov    -0x28(%rbp),%ecx
+  8044bf:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+  8044c3:	8b 75 cc             	mov    -0x34(%rbp),%esi
+  8044c6:	89 fb                	mov    %edi,%ebx
+  8044c8:	0f 01 c1             	vmcall 
+  8044cb:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  8044ce:	eb 26                	jmp    8044f6 <ipc_host_send+0x97>
+  8044d0:	48 b8 4a 1d 80 00 00 	movabs $0x801d4a,%rax
+  8044d7:	00 00 00 
+  8044da:	ff d0                	callq  *%rax
+  8044dc:	b8 02 00 00 00       	mov    $0x2,%eax
+  8044e1:	8b 7d dc             	mov    -0x24(%rbp),%edi
+  8044e4:	8b 4d d8             	mov    -0x28(%rbp),%ecx
+  8044e7:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+  8044eb:	8b 75 cc             	mov    -0x34(%rbp),%esi
+  8044ee:	89 fb                	mov    %edi,%ebx
+  8044f0:	0f 01 c1             	vmcall 
+  8044f3:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  8044f6:	83 7d ec f8          	cmpl   $0xfffffff8,-0x14(%rbp)
+  8044fa:	74 d4                	je     8044d0 <ipc_host_send+0x71>
+  8044fc:	83 7d ec 00          	cmpl   $0x0,-0x14(%rbp)
+  804500:	79 55                	jns    804557 <ipc_host_send+0xf8>
+  804502:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  804505:	89 c2                	mov    %eax,%edx
+  804507:	be 81 00 00 00       	mov    $0x81,%esi
+  80450c:	48 bf d0 4d 80 00 00 	movabs $0x804dd0,%rdi
+  804513:	00 00 00 
+  804516:	b8 00 00 00 00       	mov    $0x0,%eax
+  80451b:	48 b9 4a 07 80 00 00 	movabs $0x80074a,%rcx
+  804522:	00 00 00 
+  804525:	ff d1                	callq  *%rcx
+  804527:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  80452a:	89 c1                	mov    %eax,%ecx
+  80452c:	48 ba ad 4d 80 00 00 	movabs $0x804dad,%rdx
+  804533:	00 00 00 
+  804536:	be 82 00 00 00       	mov    $0x82,%esi
+  80453b:	48 bf c3 4d 80 00 00 	movabs $0x804dc3,%rdi
+  804542:	00 00 00 
+  804545:	b8 00 00 00 00       	mov    $0x0,%eax
+  80454a:	49 b8 11 05 80 00 00 	movabs $0x800511,%r8
+  804551:	00 00 00 
+  804554:	41 ff d0             	callq  *%r8
+  804557:	48 83 c4 38          	add    $0x38,%rsp
+  80455b:	5b                   	pop    %rbx
+  80455c:	5d                   	pop    %rbp
+  80455d:	c3                   	retq   
 
-0000000000804438 <ipc_find_env>:
-  804438:	55                   	push   %rbp
-  804439:	48 89 e5             	mov    %rsp,%rbp
-  80443c:	48 83 ec 14          	sub    $0x14,%rsp
-  804440:	89 7d ec             	mov    %edi,-0x14(%rbp)
-  804443:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
-  80444a:	eb 4e                	jmp    80449a <ipc_find_env+0x62>
-  80444c:	48 ba 00 00 80 00 80 	movabs $0x8000800000,%rdx
-  804453:	00 00 00 
-  804456:	8b 45 fc             	mov    -0x4(%rbp),%eax
-  804459:	48 98                	cltq   
-  80445b:	48 69 c0 68 01 00 00 	imul   $0x168,%rax,%rax
-  804462:	48 01 d0             	add    %rdx,%rax
-  804465:	48 05 d0 00 00 00    	add    $0xd0,%rax
-  80446b:	8b 00                	mov    (%rax),%eax
-  80446d:	3b 45 ec             	cmp    -0x14(%rbp),%eax
-  804470:	75 24                	jne    804496 <ipc_find_env+0x5e>
-  804472:	48 ba 00 00 80 00 80 	movabs $0x8000800000,%rdx
-  804479:	00 00 00 
-  80447c:	8b 45 fc             	mov    -0x4(%rbp),%eax
-  80447f:	48 98                	cltq   
-  804481:	48 69 c0 68 01 00 00 	imul   $0x168,%rax,%rax
-  804488:	48 01 d0             	add    %rdx,%rax
-  80448b:	48 05 c0 00 00 00    	add    $0xc0,%rax
-  804491:	8b 40 08             	mov    0x8(%rax),%eax
-  804494:	eb 12                	jmp    8044a8 <ipc_find_env+0x70>
-  804496:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
-  80449a:	81 7d fc ff 03 00 00 	cmpl   $0x3ff,-0x4(%rbp)
-  8044a1:	7e a9                	jle    80444c <ipc_find_env+0x14>
-  8044a3:	b8 00 00 00 00       	mov    $0x0,%eax
-  8044a8:	c9                   	leaveq 
-  8044a9:	c3                   	retq   
+000000000080455e <ipc_find_env>:
+  80455e:	55                   	push   %rbp
+  80455f:	48 89 e5             	mov    %rsp,%rbp
+  804562:	48 83 ec 14          	sub    $0x14,%rsp
+  804566:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  804569:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+  804570:	eb 4e                	jmp    8045c0 <ipc_find_env+0x62>
+  804572:	48 ba 00 00 80 00 80 	movabs $0x8000800000,%rdx
+  804579:	00 00 00 
+  80457c:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  80457f:	48 98                	cltq   
+  804581:	48 69 c0 68 01 00 00 	imul   $0x168,%rax,%rax
+  804588:	48 01 d0             	add    %rdx,%rax
+  80458b:	48 05 d0 00 00 00    	add    $0xd0,%rax
+  804591:	8b 00                	mov    (%rax),%eax
+  804593:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+  804596:	75 24                	jne    8045bc <ipc_find_env+0x5e>
+  804598:	48 ba 00 00 80 00 80 	movabs $0x8000800000,%rdx
+  80459f:	00 00 00 
+  8045a2:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  8045a5:	48 98                	cltq   
+  8045a7:	48 69 c0 68 01 00 00 	imul   $0x168,%rax,%rax
+  8045ae:	48 01 d0             	add    %rdx,%rax
+  8045b1:	48 05 c0 00 00 00    	add    $0xc0,%rax
+  8045b7:	8b 40 08             	mov    0x8(%rax),%eax
+  8045ba:	eb 12                	jmp    8045ce <ipc_find_env+0x70>
+  8045bc:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+  8045c0:	81 7d fc ff 03 00 00 	cmpl   $0x3ff,-0x4(%rbp)
+  8045c7:	7e a9                	jle    804572 <ipc_find_env+0x14>
+  8045c9:	b8 00 00 00 00       	mov    $0x0,%eax
+  8045ce:	c9                   	leaveq 
+  8045cf:	c3                   	retq   
 
-00000000008044aa <pageref>:
-  8044aa:	55                   	push   %rbp
-  8044ab:	48 89 e5             	mov    %rsp,%rbp
-  8044ae:	48 83 ec 18          	sub    $0x18,%rsp
-  8044b2:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
-  8044b6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
-  8044ba:	48 c1 e8 15          	shr    $0x15,%rax
-  8044be:	48 89 c2             	mov    %rax,%rdx
-  8044c1:	48 b8 00 00 00 80 00 	movabs $0x10080000000,%rax
-  8044c8:	01 00 00 
-  8044cb:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
-  8044cf:	83 e0 01             	and    $0x1,%eax
-  8044d2:	48 85 c0             	test   %rax,%rax
-  8044d5:	75 07                	jne    8044de <pageref+0x34>
-  8044d7:	b8 00 00 00 00       	mov    $0x0,%eax
-  8044dc:	eb 53                	jmp    804531 <pageref+0x87>
-  8044de:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
-  8044e2:	48 c1 e8 0c          	shr    $0xc,%rax
-  8044e6:	48 89 c2             	mov    %rax,%rdx
-  8044e9:	48 b8 00 00 00 00 00 	movabs $0x10000000000,%rax
-  8044f0:	01 00 00 
-  8044f3:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
-  8044f7:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
-  8044fb:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-  8044ff:	83 e0 01             	and    $0x1,%eax
-  804502:	48 85 c0             	test   %rax,%rax
-  804505:	75 07                	jne    80450e <pageref+0x64>
-  804507:	b8 00 00 00 00       	mov    $0x0,%eax
-  80450c:	eb 23                	jmp    804531 <pageref+0x87>
-  80450e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-  804512:	48 c1 e8 0c          	shr    $0xc,%rax
-  804516:	48 89 c2             	mov    %rax,%rdx
-  804519:	48 b8 00 00 a0 00 80 	movabs $0x8000a00000,%rax
-  804520:	00 00 00 
-  804523:	48 c1 e2 04          	shl    $0x4,%rdx
-  804527:	48 01 d0             	add    %rdx,%rax
-  80452a:	0f b7 40 08          	movzwl 0x8(%rax),%eax
-  80452e:	0f b7 c0             	movzwl %ax,%eax
-  804531:	c9                   	leaveq 
-  804532:	c3                   	retq   
+00000000008045d0 <pageref>:
+  8045d0:	55                   	push   %rbp
+  8045d1:	48 89 e5             	mov    %rsp,%rbp
+  8045d4:	48 83 ec 18          	sub    $0x18,%rsp
+  8045d8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  8045dc:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  8045e0:	48 c1 e8 15          	shr    $0x15,%rax
+  8045e4:	48 89 c2             	mov    %rax,%rdx
+  8045e7:	48 b8 00 00 00 80 00 	movabs $0x10080000000,%rax
+  8045ee:	01 00 00 
+  8045f1:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
+  8045f5:	83 e0 01             	and    $0x1,%eax
+  8045f8:	48 85 c0             	test   %rax,%rax
+  8045fb:	75 07                	jne    804604 <pageref+0x34>
+  8045fd:	b8 00 00 00 00       	mov    $0x0,%eax
+  804602:	eb 53                	jmp    804657 <pageref+0x87>
+  804604:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  804608:	48 c1 e8 0c          	shr    $0xc,%rax
+  80460c:	48 89 c2             	mov    %rax,%rdx
+  80460f:	48 b8 00 00 00 00 00 	movabs $0x10000000000,%rax
+  804616:	01 00 00 
+  804619:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
+  80461d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  804621:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  804625:	83 e0 01             	and    $0x1,%eax
+  804628:	48 85 c0             	test   %rax,%rax
+  80462b:	75 07                	jne    804634 <pageref+0x64>
+  80462d:	b8 00 00 00 00       	mov    $0x0,%eax
+  804632:	eb 23                	jmp    804657 <pageref+0x87>
+  804634:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  804638:	48 c1 e8 0c          	shr    $0xc,%rax
+  80463c:	48 89 c2             	mov    %rax,%rdx
+  80463f:	48 b8 00 00 a0 00 80 	movabs $0x8000a00000,%rax
+  804646:	00 00 00 
+  804649:	48 c1 e2 04          	shl    $0x4,%rdx
+  80464d:	48 01 d0             	add    %rdx,%rax
+  804650:	0f b7 40 08          	movzwl 0x8(%rax),%eax
+  804654:	0f b7 c0             	movzwl %ax,%eax
+  804657:	c9                   	leaveq 
+  804658:	c3                   	retq   

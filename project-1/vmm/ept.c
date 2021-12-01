@@ -175,9 +175,16 @@ int ept_page_insert(epte_t* eptrt, struct PageInfo* pp, void* gpa, int perm) {
 	return -E_NO_MEM;
     if (val < 0)
 	return val;
-    pp->pp_ref++;
+    perm = perm|__EPTE_READ|__EPTE_IPAT;
+    bool present = *pte & __EPTE_READ;
+    if(present && pa2page(PTE_ADDR(*pte)) == pp)
+    {
+        *pte = ((uint64_t)page2pa(pp)) | perm | __EPTE_IPAT;
+        return 0;
+    }    
     if(*pte & PTE_P)
             page_remove(eptrt, gpa);
+    pp->pp_ref++;
     *pte = ((uint64_t)page2pa(pp)) | perm | __EPTE_IPAT;
     return 0;
 }

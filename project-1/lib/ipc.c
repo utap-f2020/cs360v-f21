@@ -124,10 +124,11 @@ ipc_host_send(envid_t to_env, uint32_t val, void *pg, int perm)
        : "0"(VMX_VMCALL_IPCSEND), "b"(to_env), "c"(val), "d"(pa), "S"(perm)
   	);
   }
-
   if (r < 0)
+{	
+	cprintf("Sud ipc_host_send:%d:ret %d\n",__LINE__, r);
     panic("error in ipc_send: %e", r);
-
+}
 }
 
 #endif // VMM_GUEST

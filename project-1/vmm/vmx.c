@@ -621,6 +621,9 @@ void asm_vmrun(struct Trapframe *tf) {
 		  , "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"
 		);
 	lock_kernel();
+		//cprintf("Sud %d \n", tf->tf_es);
+
+
 	if(tf->tf_es) {
 		cprintf("Error during VMLAUNCH/VMRESUME\n");
 	} else {

@@ -673,8 +673,8 @@ bc_pgfault(struct UTrapframe *utf)
   800795:	49 b8 fd 30 80 00 00 	movabs $0x8030fd,%r8
   80079c:	00 00 00 
   80079f:	41 ff d0             	callq  *%r8
-	/* FIXME DP: Should be lab 8 */
-    /* Your code here */
+		panic("in bc_pgfault, host_read: %e", r);
+
 
 #endif // VMM_GUEST
 
@@ -705,7 +705,7 @@ bc_pgfault(struct UTrapframe *utf)
   8007f5:	89 c1                	mov    %eax,%ecx
   8007f7:	48 ba 60 72 80 00 00 	movabs $0x807260,%rdx
   8007fe:	00 00 00 
-  800801:	be 43 00 00 00       	mov    $0x43,%esi
+  800801:	be 47 00 00 00       	mov    $0x47,%esi
   800806:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   80080d:	00 00 00 
   800810:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -734,7 +734,7 @@ bc_pgfault(struct UTrapframe *utf)
   80084e:	48 89 c1             	mov    %rax,%rcx
   800851:	48 ba 80 72 80 00 00 	movabs $0x807280,%rdx
   800858:	00 00 00 
-  80085b:	be 49 00 00 00       	mov    $0x49,%esi
+  80085b:	be 4d 00 00 00       	mov    $0x4d,%esi
   800860:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   800867:	00 00 00 
   80086a:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -774,7 +774,7 @@ flush_block(void *addr)
   8008b5:	48 89 c1             	mov    %rax,%rcx
   8008b8:	48 ba 99 72 80 00 00 	movabs $0x807299,%rdx
   8008bf:	00 00 00 
-  8008c2:	be 59 00 00 00       	mov    $0x59,%esi
+  8008c2:	be 5d 00 00 00       	mov    $0x5d,%esi
   8008c7:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   8008ce:	00 00 00 
   8008d1:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -822,8 +822,8 @@ flush_block(void *addr)
   80094b:	48 b8 21 03 80 00 00 	movabs $0x800321,%rax
   800952:	00 00 00 
   800955:	ff d0                	callq  *%rax
-	/* FIXME DP: Should be lab 8 */
-    /* Your code here */
+	host_write(blockno * BLKSECTS, (void*) addr, BLKSECTS);
+	
 
 #endif
 
@@ -914,7 +914,7 @@ check_bc(void)
   800a55:	00 00 00 
   800a58:	48 ba d5 72 80 00 00 	movabs $0x8072d5,%rdx
   800a5f:	00 00 00 
-  800a62:	be 7c 00 00 00       	mov    $0x7c,%esi
+  800a62:	be 82 00 00 00       	mov    $0x82,%esi
   800a67:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   800a6e:	00 00 00 
   800a71:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -936,7 +936,7 @@ check_bc(void)
   800aae:	00 00 00 
   800ab1:	48 ba d5 72 80 00 00 	movabs $0x8072d5,%rdx
   800ab8:	00 00 00 
-  800abb:	be 7d 00 00 00       	mov    $0x7d,%esi
+  800abb:	be 83 00 00 00       	mov    $0x83,%esi
   800ac0:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   800ac7:	00 00 00 
   800aca:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -970,7 +970,7 @@ check_bc(void)
   800b2c:	00 00 00 
   800b2f:	48 ba d5 72 80 00 00 	movabs $0x8072d5,%rdx
   800b36:	00 00 00 
-  800b39:	be 81 00 00 00       	mov    $0x81,%esi
+  800b39:	be 87 00 00 00       	mov    $0x87,%esi
   800b3e:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   800b45:	00 00 00 
   800b48:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -996,7 +996,7 @@ check_bc(void)
   800b8f:	00 00 00 
   800b92:	48 ba d5 72 80 00 00 	movabs $0x8072d5,%rdx
   800b99:	00 00 00 
-  800b9c:	be 84 00 00 00       	mov    $0x84,%esi
+  800b9c:	be 8a 00 00 00       	mov    $0x8a,%esi
   800ba1:	48 bf ba 71 80 00 00 	movabs $0x8071ba,%rdi
   800ba8:	00 00 00 
   800bab:	b8 00 00 00 00       	mov    $0x0,%eax

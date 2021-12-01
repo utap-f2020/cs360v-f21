@@ -14,7 +14,6 @@
 #include <kern/syscall.h>
 #include <kern/env.h>
 #include <kern/cpu.h>
-
 static int vmdisk_number = 0;	//this number assign to the vm
 int 
 vmx_get_vmdisk_number() {
@@ -255,12 +254,13 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 {
 	bool handled = false;
 	multiboot_info_t mbinfo;
-	int perm, r;
+	int perm, r=0, i;
 	void *gpa_pg, *hva_pg;
 	envid_t to_env;
 	uint32_t val;
+ struct Env  * env_store = NULL;
 	// phys address of the multiboot map in the guest.
-	uint64_t multiboot_map_addr = 0x6000;
+	uint64_t multiboot_map_addr = 0x6000, des_env_type;
 	switch(tf->tf_regs.reg_rax) {
 	case VMX_VMCALL_MBMAP:
         /* Hint: */
@@ -366,26 +366,25 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
         //  Then you should call sys_ipc_try_send()
 		/* Your code here */
 		to_env = tf->tf_regs.reg_rdx;
-	    if ( to_env == 1 && curenv->env_type == ENV_TYPE_GUEST)
-	    {
-//	    cprintf("VTZ:%d:\n",__LINE__);
-		for (i = 0; i < NENV; i++)
-		{
-		    if (envs[i].env_type == ENV_TYPE_FS)
-		    {
-			to_env = (uint64_t)( envs[i].env_id);
-			break;
-		    }
+		if ( to_env == VMX_HOST_FS_ENV) {
+			for (i = 0; i < NENV; i++)
+			{
+		    	if (envs[i].env_type == ENV_TYPE_FS)
+		    	{
+				to_env = (uint64_t)( envs[i].env_id);
+				break;
+		    	}
+		    	else
+			return -E_INVAL;
+			}
 		}
-	    }
+		void* hva_h = NULL;
+		ept_gpa2hva(eptrt, (void*)tf->tf_regs.reg_rdx, &hva_h);
+		unsigned perm = tf->tf_regs.reg_rsi;		
 			
-//	    cprintf("VTZ:%d:%d\n",__LINE__, to_env);
-            ret = syscall(SYS_ipc_try_send,(uint64_t) to_env, (uint64_t)tf->tf_regs.reg_rcx, (uint64_t)tf->tf_regs.reg_rbx, (uint64_t)tf->tf_regs.reg_rdi, (uint64_t)0);
-
-//	    cprintf("VTZ:%d:\n",__LINE__);
-	    tf->tf_regs.reg_rax = (uint64_t) ret;
-//	    cprintf("IPC send hypercall not implemented\n");	    
-	    handled = true;
+		r = syscall(SYS_ipc_try_send,(uint64_t) to_env, (uint64_t)tf->tf_regs.reg_rcx, (uint64_t)hva_h, perm, (uint64_t)0);
+		tf->tf_regs.reg_rax = r;
+		handled = true;
 		break;
 
 	case VMX_VMCALL_IPCRECV:
@@ -394,12 +393,12 @@ handle_vmcall(struct Trapframe *tf, struct VmxGuestInfo *gInfo, uint64_t *eptrt)
 		// you should go ahead and increment rip before this call.
 		/* Your code here */
 		//	    cprintf("VTZ:%d:\n",__LINE__);
-    	    tf->tf_rip += vmcs_read32(VMCS_32BIT_VMEXIT_INSTRUCTION_LENGTH);  //cause it never returns
-	//	    cprintf("VTZ:%d:\n",__LINE__);
-	    ret = syscall(SYS_ipc_recv, (uint64_t)tf->tf_regs.reg_rdx, (uint64_t)0, (uint64_t)0, (uint64_t)0,(uint64_t)0);
-	// cprintf("IPC recv hypercall not implemented\n");	    
-	    tf->tf_regs.reg_rax = (uint64_t)ret;
-            handled = true;
+// RIP increment
+		tf->tf_rip += vmcs_read32(VMCS_32BIT_VMEXIT_INSTRUCTION_LENGTH);  
+		r = syscall(SYS_ipc_recv, (uint64_t)tf->tf_regs.reg_rdx, (uint64_t)0, (uint64_t)0, (uint64_t)0,(uint64_t)0);
+		tf->tf_regs.reg_rax = (uint64_t)r;
+		cprintf("sys ipc try receive : [%d] \n",r);
+		handled = true;
 		break;
 	case VMX_VMCALL_LAPICEOI:
 		lapic_eoi();

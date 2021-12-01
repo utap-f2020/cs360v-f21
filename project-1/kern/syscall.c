@@ -347,29 +347,49 @@ sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)
             return -E_INVAL;
         }
         // Code here vtz
-        if (env->env_type != ENV_TYPE_GUEST){
+        if (e->env_type != ENV_TYPE_GUEST){
 
             r = page_insert(e->env_pml4e, pp, e->env_ipc_dstva, perm);
             if (r < 0) {
                 cprintf("[%08x] page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
                 return r;
             }
-        } else {
-            r = ept_page_insert(env->env_pml4e, pp, env->env_ipc_dstva, perm);
+	}
+#ifndef VMM_GUEST
+        else {
+                //cprintf("SUd ept page insert %d \n", e->env_type);
+            r = ept_page_insert(e->env_pml4e, pp, (void*) e->env_ipc_dstva, perm);
             if (r < 0){
                 cprintf("[%08x] ept_page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
                 return r;
             }
         }
+#endif
 
         e->env_ipc_perm = perm;
-    } else {
-        e->env_ipc_perm = 0;
-    }
+    } 
+#ifndef VMM_GUEST
+    else if (srcva < (void*) UTOP &&  e->env_type == ENV_TYPE_GUEST) {
+            pp = page_lookup(curenv->env_pml4e, srcva, &ppte);
+            cprintf("Sud ept page insert guest %d \n", e->env_type);
+            r = ept_page_insert(e->env_pml4e, pp, (void*) e->env_ipc_dstva, __EPTE_FULL);
+            if (r < 0){
+                cprintf("[%08x] ept_page_insert %08x failed in sys_ipc_try_send (%e)\n", curenv->env_id, srcva, r);
+                return r;
+            }
+    e->env_ipc_perm = perm;
 
+    }
+#endif
+    else	{
+            //cprintf("Sud else %d \n", e->env_type);
+	    e->env_ipc_perm = 0;
+    }
     e->env_ipc_recving = 0;
     e->env_ipc_from = curenv->env_id;
     e->env_ipc_value = value;
+    if (e->env_type == ENV_TYPE_GUEST)
+	e->env_tf.tf_regs.reg_rsi = value;
     e->env_tf.tf_regs.reg_rax = 0;
     e->env_status = ENV_RUNNABLE;
     return 0;

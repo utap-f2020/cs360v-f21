@@ -1,3 +1,21 @@
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-iscsi.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-curl.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-rbd.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-dmg.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-iscsi.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-curl.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-rbd.so
+Note: only modules from the same build can be loaded.
+Failed to initialize module: /usr/lib/x86_64-linux-gnu/qemu/block-dmg.so
+Note: only modules from the same build can be loaded.
 6828 decimal is 15254 octal!
 
 e820 MEMORY MAP
@@ -31,31 +49,23 @@ Device 1 presence: 1
 block cache is good
 superblock is good
 bitmap is good
-TRAP frame at 0x8003fffd80 from CPU 0
-  r15  0x00000000
-  r14  0x00000200
-  r13  0x00000000
-  r12  0x00000200
-  r11  0x00000000
-  r10  0x00000000
-  r9  0x00000007
-  r8  0x00000007
-  rdi  0x00001002
-  rsi  0x8003fffe70
-  rbp  0x8003fffea0
-  rbx  0x00001002
-  rdx  0x80048442d0
-  rcx  0x00000000
-  rax  0x00000001
-  es   0x----0010
-  ds   0x----0010
-  trap 0x0000000e Page Fault
-  cr2  0x00000001
-  err  0x00000000 [kernel, read, not-present]
-  rip  0x800420ed8b
-  cs   0x----0008
-  flag 0x00010002
-kernel panic on CPU 0 at ../kern/trap.c:478: page fault
-Welcome to the JOS kernel monitor!
-Type 'help' for a list of commands.
-qemu-system-x86_64: terminating on signal 15 from pid 8627
+Creating a new virtual HDD at /vmm/fs1.img
+Create VHD finished
+VMXON
+6828 decimal is 15254 octal!
+VMX extension hidden from guest.
+
+e820 MEMORY MAP
+size: 24, address: 0x0000000000000000, length: 0x00000000000a0000, type: 1
+size: 24, address: 0x00000000000a0000, length: 0x0000000000060000, type: 2
+size: 24, address: 0x0000000000100000, length: 0x0000000000f00000, type: 1
+
+Physical memory: 16M available, base = 640K, extended = 15360K, npages = 4096
+Pages limited to 3276800 by upage address range (12800MB), Pages limited to 134201344 by remapped phys mem (524224MB)
+enabled interrupts: 1 2 4
+icode startup
+FS is running
+icode: open /motd
+FS can do I/O
+sys ipc try send : [0]sys ipc try send : [0] 
+qemu-system-x86_64: terminating on signal 15 from pid 25028
